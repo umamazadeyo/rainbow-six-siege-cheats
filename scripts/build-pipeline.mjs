@@ -1,6 +1,8 @@
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
+import { writeCheckoutRedirectsFile } from '../src/config/checkout-redirects.mjs';
+import { resolveStaticAssetRoot } from './dist-static-root.mjs';
 
 const cloudflare = process.argv.includes('--cloudflare');
 const astroCliCandidates = [
@@ -31,6 +33,13 @@ if (!astroCli) {
 
 run('optimize-images', process.execPath, ['scripts/optimize-images.mjs']);
 run('astro build', process.execPath, [astroCli, 'build']);
+
+const distDir = path.join(process.cwd(), 'dist');
+writeCheckoutRedirectsFile(distDir);
+const staticRoot = resolveStaticAssetRoot();
+if (staticRoot && path.resolve(staticRoot) !== path.resolve(distDir)) {
+  writeCheckoutRedirectsFile(staticRoot);
+}
 
 if (cloudflare) {
   const distDir = path.join(process.cwd(), 'dist');

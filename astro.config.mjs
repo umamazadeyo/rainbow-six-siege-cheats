@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
+import { buildAstroCheckoutRedirects } from './src/config/checkout-redirects.mjs';
 
 /** Set only by `npm run build:cloudflare` / Wrangler `[build].command` — not during `astro dev`. */
 const useCloudflareAdapter = process.env.ASTRO_ADAPTER === 'cloudflare';
@@ -31,6 +32,7 @@ export default defineConfig({
   site: 'https://r6siegecheat.com',
   trailingSlash: 'always',
   redirects: {
+    ...buildAstroCheckoutRedirects(),
     '/cheats/': '/products/rainbow-six-siege-cheats/',
     '/cheats/lite/': '/products/rainbow-six-siege-cheats/',
     '/cheats/pro/': '/products/rainbow-six-siege-cheats/',

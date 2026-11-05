@@ -44,11 +44,27 @@ export function checkoutForSlug(slug: string): string {
   }
 }
 
+function internalPathOnly(href: string): string {
+  const q = href.indexOf('?');
+  const hash = href.indexOf('#');
+  let end = href.length;
+  if (q >= 0) end = Math.min(end, q);
+  if (hash >= 0) end = Math.min(end, hash);
+  let path = href.slice(0, end);
+  if (!path.startsWith('/')) return path;
+  if (path !== '/' && !path.endsWith('/')) path = `${path}/`;
+  return path;
+}
+
 /** Resolve blog CTA or legacy href values to internal checkout paths. */
 export function resolveCheckoutHref(href: string): string {
   if (!href.startsWith('http')) {
-    if (href.startsWith('/go/hwid-spoofer')) return checkoutPath('hwidSpoofer');
-    if (href.startsWith('/go/')) return checkoutPath('r6');
+    const path = internalPathOnly(href);
+    if (path.startsWith('/go/hwid-spoofer')) return checkoutPath('hwidSpoofer');
+    if (path.startsWith('/go/ugc')) return checkoutPath('ugc');
+    if (path.startsWith('/go/')) return checkoutPath('r6');
+    if (path.includes('/hwid-spoofer/')) return checkoutPath('hwidSpoofer');
+    if (path.startsWith('/products/rainbow-six-siege-cheats/')) return checkoutPath('r6');
     return href.startsWith('/') ? href : `/${href}`;
   }
 

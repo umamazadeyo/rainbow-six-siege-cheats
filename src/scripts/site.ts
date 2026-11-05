@@ -37,8 +37,15 @@ function initNavHighlight() {
   });
 }
 
+function resolveScrollTargetId(id: string): string {
+  if (id === 'products' && document.getElementById('products-title')) {
+    return 'products-title';
+  }
+  return id;
+}
+
 function scrollToSection(id: string, behavior: ScrollBehavior = 'smooth') {
-  const target = document.getElementById(id);
+  const target = document.getElementById(resolveScrollTargetId(id));
   if (!target) return false;
 
   const nav = document.querySelector<HTMLElement>('[data-floating-nav]');
@@ -56,9 +63,10 @@ function initInPageScroll() {
       const id = el.getAttribute('data-scroll-target');
       if (!id) return;
 
+      const scrollId = resolveScrollTargetId(id);
       if (scrollToSection(id)) {
         event.preventDefault();
-        history.replaceState(null, '', `#${id}`);
+        history.replaceState(null, '', `#${scrollId}`);
         return;
       }
 

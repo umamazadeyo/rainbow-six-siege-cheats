@@ -592,7 +592,7 @@ export const en: Translations = {
     exploreLinks: [
       { href: '/#features', label: 'Feature overview', ariaLabel: 'Features' },
       { href: '/#setup-guide', label: 'Setup guide', ariaLabel: 'Setup guide' },
-      { href: '/#products', label: 'Products section', ariaLabel: 'Products on homepage' },
+      { href: '/#products-title', label: 'Products section', ariaLabel: 'Products on homepage' },
       { href: '/products/rainbow-six-siege-cheats/elite/', label: 'Elite R6 Siege cheats', ariaLabel: 'Elite cheats' },
       { href: '/products/rainbow-six-siege-cheats/', label: 'All products & utilities', ariaLabel: 'Products' },
       { href: '/blog/', label: 'Read patch guides', ariaLabel: 'Blog' },

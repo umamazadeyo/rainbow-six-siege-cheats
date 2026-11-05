@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 /** Single checkout destination for Rainbow Six Siege cheat tier. */
 export const R6_CHECKOUT_URL =
   'https://zadeyo.com/go/UMAMA?to=%2Fproducts%2Frainbow-six-siege';
@@ -37,4 +40,28 @@ export function resolveCheckoutPathRedirect(pathname) {
   }
 
   return null;
+}
+
+/** Astro `redirects` config — external affiliate URLs for every /go/* path (static + SSR). */
+export function buildAstroCheckoutRedirects() {
+  /** @type {Record<string, { status: 302, destination: string }>} */
+  const redirects = {};
+  for (const [from, destination] of CHECKOUT_PATH_REDIRECTS) {
+    // Site uses trailingSlash: 'always' — one redirect rule per path avoids Astro route collisions.
+    if (!from.endsWith('/')) continue;
+    redirects[from] = { status: 302, destination };
+  }
+  return redirects;
+}
+
+/**
+ * Cloudflare Pages / static `_redirects` (302 to affiliate checkout).
+ * @param {string} distDir
+ */
+export function writeCheckoutRedirectsFile(distDir) {
+  const lines = [];
+  for (const [from, destination] of CHECKOUT_PATH_REDIRECTS) {
+    lines.push(`${from}  ${destination}  302`);
+  }
+  fs.writeFileSync(path.join(distDir, '_redirects'), `${lines.join('\n')}\n`, 'utf8');
 }
