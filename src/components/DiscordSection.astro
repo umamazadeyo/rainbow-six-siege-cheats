@@ -1,0 +1,66 @@
+---
+import '../styles/discord-section.css';
+import { t } from '../i18n';
+import { DISCORD_INVITE_URL } from '../config/discord';
+import Icon from './icons/Icon.astro';
+import { Button } from '@/components/starwind/button';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/starwind/card';
+
+const d = t.discordSection;
+---
+
+<section
+  id="discord"
+  class="discord-section border-y border-border bg-muted/20 py-16 md:py-20 lg:py-24"
+  aria-labelledby="discord-title"
+>
+  <div class="discord-section__inner mx-auto max-w-6xl px-5">
+    <header class="section-header section-header--wide discord-section__header">
+      <p class="section-header__eyebrow">{d.eyebrow}</p>
+      <h2 id="discord-title" class="section-header__title">{d.title}</h2>
+      <p class="section-header__subtitle">{d.subtitle}</p>
+    </header>
+
+    <Card class="discord-section__card mx-auto mt-10 max-w-3xl gap-0 overflow-hidden py-0 shadow-md ring-1 ring-primary/15">
+      <CardHeader class="space-y-3 border-b border-border/80 bg-card/80 px-6 pb-5 pt-6 md:px-8 md:pt-8">
+        <div class="flex size-12 items-center justify-center rounded-xl bg-primary/15 ring-1 ring-inset ring-primary/25">
+          <Icon name="messageCircle" size={26} class="text-primary" />
+        </div>
+        <CardTitle class="text-xl normal-case md:text-2xl">{d.cardTitle}</CardTitle>
+      </CardHeader>
+      <CardContent class="space-y-4 px-6 py-6 md:px-8 md:py-7">
+        <p class="text-sm leading-relaxed text-muted-foreground md:text-base">{d.cardLead}</p>
+        <ul class="discord-section__list">
+          {d.bullets.map((item) => (
+            <li class="flex gap-2.5 text-sm leading-relaxed text-muted-foreground md:text-[0.9375rem]">
+              <Icon name="circleCheck" size={18} class="mt-0.5 shrink-0 text-primary" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+      <CardFooter class="flex flex-col gap-3 border-t border-border/80 bg-muted/30 px-6 py-5 sm:flex-row sm:items-center sm:justify-between md:px-8">
+        <p class="text-xs text-muted-foreground md:text-sm">{d.note}</p>
+        <Button
+          as="a"
+          href={DISCORD_INVITE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          size="lg"
+          class="w-full shrink-0 rounded-xl sm:w-auto"
+          aria-label={t.ui.discordAria}
+        >
+          {d.cta}
+          <Icon name="arrowUpRight" size={18} />
+        </Button>
+      </CardFooter>
+    </Card>
+  </div>
+</section>

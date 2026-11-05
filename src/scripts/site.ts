@@ -1,0 +1,141 @@
+function initFonts() {
+  const root = document.documentElement;
+
+  const markReady = () => {
+    root.classList.remove('fonts-pending');
+    root.classList.add('fonts-ready');
+  };
+
+  if (!document.fonts?.ready) {
+    markReady();
+    return;
+  }
+
+  document.fonts.ready.then(markReady).catch(markReady);
+}
+
+function initNavHighlight() {
+  const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '') || '/';
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]').forEach((link) => {
+    const href = link.getAttribute('href') ?? '';
+    const linkPath = href.replace(/\/index\.html$/, '').replace(/\/$/, '') || '/';
+    let isActive = false;
+
+    if (linkPath === '/') {
+      isActive = path === '/';
+    } else {
+      isActive = path === linkPath || path.startsWith(`${linkPath}/`);
+    }
+
+    link.classList.toggle('is-active', isActive);
+    if (isActive) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
+function scrollToSection(id: string, behavior: ScrollBehavior = 'smooth') {
+  const target = document.getElementById(id);
+  if (!target) return false;
+
+  const nav = document.querySelector<HTMLElement>('[data-floating-nav]');
+  const navClearance = nav?.getBoundingClientRect().height ?? 72;
+  const scrollMargin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+  const offsetPx = Math.max(navClearance + 12, scrollMargin + 8);
+  const top = target.getBoundingClientRect().top + window.scrollY - offsetPx;
+  window.scrollTo({ top: Math.max(0, top), behavior });
+  return true;
+}
+
+function initInPageScroll() {
+  document.querySelectorAll<HTMLElement>('[data-scroll-target]').forEach((el) => {
+    el.addEventListener('click', (event) => {
+      const id = el.getAttribute('data-scroll-target');
+      if (!id) return;
+
+      if (scrollToSection(id)) {
+        event.preventDefault();
+        history.replaceState(null, '', `#${id}`);
+        return;
+      }
+
+      const href = el.getAttribute('href');
+      if (href === '/' || href === '' || href === window.location.pathname) {
+        event.preventDefault();
+        window.location.href = `/#${id}`;
+      }
+    });
+  });
+
+  const hash = window.location.hash.replace(/^#/, '');
+  if (hash) {
+    window.requestAnimationFrame(() => scrollToSection(hash, 'auto'));
+  }
+}
+
+function initSkipLink() {
+  document.querySelectorAll<HTMLElement>('[data-skip-to-main]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const main = document.getElementById('main-content');
+      if (!main) return;
+
+      main.setAttribute('tabindex', '-1');
+      main.focus({ preventScroll: false });
+      main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
+
+function initFaqFilters() {
+  document.querySelectorAll('[data-faq-filters]').forEach((container) => {
+    const section = container.closest('[data-faq-section]');
+    const list = section?.querySelector('[data-faq-list]');
+    if (!list) return;
+
+    const items = list.querySelectorAll<HTMLElement>('[data-faq-topic]');
+    const chips = container.querySelectorAll<HTMLButtonElement>('[data-faq-filter]');
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const topic = chip.getAttribute('data-faq-filter');
+        chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+        items.forEach((item) => {
+          const itemTopic = item.getAttribute('data-faq-topic');
+          const show = topic === 'all' || itemTopic === topic;
+          item.toggleAttribute('data-hidden', !show);
+        });
+      });
+    });
+  });
+}
+
+function initThemeMetaColor() {
+  const metaTheme = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+  if (!metaTheme) return;
+
+  const update = () => {
+    metaTheme.content = document.documentElement.classList.contains('dark') ? '#7F3DEE' : '#f5f7fa';
+  };
+
+  update();
+  const observer = new MutationObserver(update);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+}
+
+function bootSite() {
+  initFonts();
+  initFaqFilters();
+  initNavHighlight();
+  initInPageScroll();
+  initSkipLink();
+  initThemeMetaColor();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootSite);
+} else {
+  bootSite();
+}

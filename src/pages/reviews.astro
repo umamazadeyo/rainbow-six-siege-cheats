@@ -1,0 +1,225 @@
+---
+import '../styles/reviews-page.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { resolvePageSeo } from '../config/seo';
+import { breadcrumbSchema, webPageSchema } from '../utils/schema';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import {
+  averageRating,
+  REVIEW_PRODUCT_LABELS,
+  seedReviews,
+  type ReviewProductFilter,
+} from '../data/reviews';
+import { Button } from '@/components/starwind/button';
+import { Textarea } from '@/components/starwind/textarea';
+import { Input } from '@/components/starwind/input';
+
+const seo = resolvePageSeo('/reviews/');
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Reviews', path: '/reviews/' },
+];
+
+const avg = averageRating(seedReviews);
+const productFilters: { id: ReviewProductFilter; label: string }[] = [
+  { id: 'all', label: 'All products' },
+  { id: 'elite', label: REVIEW_PRODUCT_LABELS.elite },
+  { id: 'hwid-spoofer', label: REVIEW_PRODUCT_LABELS['hwid-spoofer'] },
+  { id: 'ugc', label: REVIEW_PRODUCT_LABELS.ugc },
+  { id: 'unlock-all', label: REVIEW_PRODUCT_LABELS['unlock-all'] },
+  { id: 'website', label: REVIEW_PRODUCT_LABELS.website },
+];
+
+const ratingFilters = [
+  { id: 'all', label: 'All ratings' },
+  { id: '5', label: '5 stars' },
+  { id: '4', label: '4+ stars' },
+  { id: '3', label: '3+ stars' },
+];
+
+const reviewSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Rainbow Six Siege Cheats — R6SiegeCheat',
+  url: 'https://r6siegecheat.com/products/rainbow-six-siege-cheats/',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: String(avg),
+    bestRating: '5',
+    worstRating: '1',
+    reviewCount: String(seedReviews.length),
+  },
+  review: seedReviews.slice(0, 8).map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.displayName },
+    datePublished: r.isoDate,
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: String(r.rating),
+      bestRating: '5',
+    },
+    reviewBody: r.text,
+  })),
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  jsonLd={[
+    webPageSchema({
+      name: 'Customer reviews — Rainbow Six Siege Cheats',
+      description: seo.description,
+      url: '/reviews/',
+    }),
+    breadcrumbSchema(breadcrumbs),
+    reviewSchema,
+  ]}
+>
+  <section class="reviews-hero py-10 md:py-14">
+    <div class="mx-auto max-w-6xl px-5" data-reviews-page>
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="mt-8 max-w-3xl space-y-4">
+        <h1 class="text-3xl font-bold uppercase leading-tight md:text-4xl">Your Experience. Your Review.</h1>
+        <p class="text-base leading-relaxed text-muted-foreground">
+          Share how Rainbow Six Siege cheats, utilities and support worked for you. Filter by product or rating, or
+          submit your own review—it saves on this device and appears in the list below.
+        </p>
+      </div>
+
+      <div class="reviews-summary">
+        <div>
+          <p class="reviews-summary__score" data-reviews-average>{avg.toFixed(1)}</p>
+          <p class="reviews-stars text-lg" data-reviews-average-stars aria-hidden="true">★★★★⯨</p>
+          <p class="mt-1 text-sm text-muted-foreground">
+            Average from <span data-reviews-count>{seedReviews.length}</span> reviews
+          </p>
+        </div>
+        <Button type="button" variant="primary" size="lg" class="rounded-xl" data-reviews-form-toggle>
+          Write a Review
+        </Button>
+      </div>
+
+      <div class="reviews-filters" aria-label="Filter by product">
+        {
+          productFilters.map((filter, i) => (
+            <button
+              type="button"
+              class:list={['reviews-filter-chip', { 'is-active': i === 0 }]}
+              data-review-filter-product
+              data-review-filter-product-value={filter.id}
+            >
+              {filter.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="reviews-filters" aria-label="Filter by rating">
+        {
+          ratingFilters.map((filter, i) => (
+            <button
+              type="button"
+              class:list={['reviews-filter-chip', { 'is-active': i === 0 }]}
+              data-review-filter-rating
+              data-review-filter-rating-value={filter.id}
+            >
+              {filter.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="reviews-form-panel" data-reviews-form hidden>
+        <h2 class="text-lg font-semibold">Submit your review</h2>
+        <p class="mt-1 text-sm text-muted-foreground">
+          Reviews save in your browser on this device. Verified purchase labels are only shown for confirmed orders.
+        </p>
+        <form class="reviews-form-grid mt-5" data-reviews-form-el>
+          <div class="reviews-field">
+            <label for="review-name">Display name</label>
+            <Input id="review-name" name="displayName" required placeholder="Your name or handle" />
+          </div>
+          <div class="reviews-field">
+            <label for="review-product">Product</label>
+            <select
+              id="review-product"
+              name="product"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm"
+              required
+            >
+              {
+                productFilters
+                  .filter((f) => f.id !== 'all')
+                  .map((f) => (
+                    <option value={f.id}>{f.label}</option>
+                  ))
+              }
+            </select>
+          </div>
+          <div class="reviews-field reviews-field--full">
+            <span class="mb-1 block text-sm font-semibold">Star rating</span>
+            <div class="reviews-rating-input">
+              {[5, 4.5, 4, 3.5, 3].map((value, i) => (
+                <button
+                  type="button"
+                  class:list={[{ 'is-active': i === 0 }]}
+                  data-review-rating-pick
+                  data-review-rating-pick-value={value}
+                >
+                  {value}★
+                </button>
+              ))}
+            </div>
+            <input type="hidden" name="rating" value="5" />
+          </div>
+          <div class="reviews-field reviews-field--full">
+            <label for="review-text">Your review</label>
+            <Textarea id="review-text" name="text" required rows={4} placeholder="What stood out about the product or site?" />
+          </div>
+          <div class="reviews-field reviews-field--full">
+            <Button type="submit" variant="primary" class="rounded-xl">Publish review</Button>
+          </div>
+        </form>
+      </div>
+
+      <div class="reviews-grid" data-reviews-list>
+        {
+          seedReviews.map((review) => (
+            <article
+              class="review-card"
+              data-review-id={review.id}
+              data-product={review.product}
+              data-rating={review.rating}
+            >
+              <div class="review-card__meta">
+                <div>
+                  <p class="review-card__name">{review.displayName}</p>
+                  <p class="review-card__product">{REVIEW_PRODUCT_LABELS[review.product]}</p>
+                </div>
+                <p class="review-card__date">{review.date}</p>
+              </div>
+              <p class="reviews-stars" aria-label={`${review.rating} out of 5 stars`}>
+                {'★'.repeat(Math.floor(review.rating))}
+                {review.rating % 1 >= 0.5 ? '⯨' : ''}
+                {'☆'.repeat(5 - Math.ceil(review.rating))}
+              </p>
+              <p class="review-card__text">{review.text}</p>
+              {
+                review.verifiedPurchase && (
+                  <span class="reviews-verified">✓ Verified purchase</span>
+                )
+              }
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { seedReviews } from '../data/reviews';
+  import { setupReviewsPage } from '../scripts/reviews-page.ts';
+  setupReviewsPage(seedReviews);
+</script>

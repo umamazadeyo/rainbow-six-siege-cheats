@@ -1,0 +1,53 @@
+---
+import '../styles/product-cheat-page.css';
+import { t } from '../i18n';
+import { productPages } from '../data/products';
+import { cheatTierIcons, productCategoryIcons } from '../data/sectionIcons';
+import SectionHeader from './SectionHeader.astro';
+import CatalogCard from './CatalogCard.astro';
+import { productPath } from '../utils/path';
+
+const s = t.products;
+
+function cardIcon(product: (typeof productPages)[number]) {
+  if (product.kind === 'tier') {
+    return cheatTierIcons[product.name] ?? 'crosshair';
+  }
+  return productCategoryIcons[product.category ?? ''] ?? 'package';
+}
+
+function cardLabel(product: (typeof productPages)[number]) {
+  if (product.kind === 'tier') {
+    return product.tier ?? product.name;
+  }
+  return product.category ?? 'Utility';
+}
+---
+
+<section id="products" class="py-16 md:py-24" aria-labelledby="products-title">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeader eyebrow={s.eyebrow} title={s.title} desc={s.subtitle} titleId="products-title" />
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+      {
+        productPages.map((product) => (
+          <CatalogCard
+            class="catalog-card--carousel h-full"
+            label={cardLabel(product)}
+            title={product.title}
+            href={productPath(product.slug)}
+            buyUrl={product.buyUrl}
+            features={product.features}
+            more={product.more}
+            icon={cardIcon(product)}
+            badge={product.badge}
+            variant={product.variant}
+            buyLabel="Buy now"
+            viewLabel="View details"
+            maxFeatures={5}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

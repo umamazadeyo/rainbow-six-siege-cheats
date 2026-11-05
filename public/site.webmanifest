@@ -1,0 +1,18 @@
+{
+  "name": "Rainbow Six Siege Cheats",
+  "short_name": "R6SiegeCheat",
+  "description": "Rainbow Six Siege cheat features, guides and utilities at r6siegecheat.com.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0d10",
+  "theme_color": "#7f3dee",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/images/blog/r6favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

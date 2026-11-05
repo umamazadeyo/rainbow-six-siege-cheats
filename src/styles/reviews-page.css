@@ -1,0 +1,205 @@
+.reviews-hero {
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in oklch, var(--muted) 35%, transparent);
+}
+
+.reviews-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklch, var(--border) 90%, var(--primary) 10%);
+  background: color-mix(in oklch, var(--card) 92%, var(--background));
+}
+
+.reviews-summary__score {
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--primary);
+}
+
+.reviews-stars {
+  display: inline-flex;
+  gap: 0.15rem;
+  color: var(--primary);
+}
+
+.reviews-stars svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.reviews-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.reviews-filter-chip {
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.reviews-filter-chip.is-active,
+.reviews-filter-chip:hover {
+  border-color: color-mix(in oklch, var(--primary) 45%, var(--border));
+  color: var(--foreground);
+  background: color-mix(in oklch, var(--primary) 12%, transparent);
+}
+
+.reviews-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.review-card:hover {
+  border-color: color-mix(in oklch, var(--primary) 40%, var(--border));
+  box-shadow: 0 8px 28px color-mix(in oklch, var(--background) 40%, transparent);
+  transform: translateY(-2px);
+}
+
+.review-card[data-hidden] {
+  display: none;
+}
+
+.review-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.review-card__name {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.review-card__date {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.review-card__product {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted-foreground);
+}
+
+.review-card__text {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: color-mix(in oklch, var(--foreground) 88%, var(--muted-foreground));
+}
+
+.reviews-form-panel {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklch, var(--primary) 25%, var(--border));
+  background: color-mix(in oklch, var(--muted) 25%, var(--card));
+}
+
+.reviews-form-panel[hidden] {
+  display: none !important;
+}
+
+.reviews-form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .reviews-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reviews-form-grid .reviews-field--full {
+    grid-column: 1 / -1;
+  }
+}
+
+.reviews-field label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.reviews-rating-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.reviews-rating-input button {
+  min-width: 2.25rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+
+.reviews-rating-input button.is-active {
+  border-color: var(--primary);
+  background: color-mix(in oklch, var(--primary) 15%, transparent);
+  color: var(--foreground);
+}
+
+.reviews-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: color-mix(in oklch, var(--primary) 80%, var(--foreground));
+}
+
+#features,
+#products,
+#setup-guide,
+#faq,
+#blog,
+#workflow,
+#hero {
+  scroll-margin-top: calc(var(--floating-nav-clearance, 5rem) + 0.75rem);
+}
