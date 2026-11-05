@@ -20,11 +20,6 @@
 
 ---
 
-> **Important — read before use**  
-> Third-party tools for Rainbow Six Siege may violate [Ubisoft Terms of Use](https://legal.ubisoft.com/) and can interact with BattlEye anti-cheat. **Account penalties, including permanent bans, are possible.** This repository hosts the **public website source code** (Astro static site). It does **not** distribute game hacks, loaders, or bypass software. Product access, **R6 cheat download**, and setup happen only through the purchaser portal linked from [r6siegecheat.com](https://r6siegecheat.com) after checkout. We do **not** guarantee safety, stealth, or specific outcomes.
-
----
-
 ## Introduction
 
 Shoppers searching for **R6 Siege cheats**, **R6 cheats for PC**, or **Rainbow Six Siege cheats price** information often land on scattered repos that promise “undetected” builds without clear product boundaries. **R6SiegeCheat** documents a single maintained storefront: combat tooling (**R6 aimbot**-style aim & recoil modules, **R6 ESP**, map awareness, and related Elite features), plus separate utilities (HWID, appeals, local Operator Skins preview).
