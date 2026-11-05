@@ -26,7 +26,9 @@ const { items } = Astro.props;
             {isLast ? (
               <BreadcrumbPage>{item.name}</BreadcrumbPage>
             ) : (
-              <BreadcrumbLink href={item.path}>{item.name}</BreadcrumbLink>
+              <BreadcrumbLink href={item.path}>
+                {item.path === '/' && item.name === 'Home' ? 'Site homepage' : item.name}
+              </BreadcrumbLink>
             )}
           </CrumbItem>
           {!isLast && <BreadcrumbSeparator />}

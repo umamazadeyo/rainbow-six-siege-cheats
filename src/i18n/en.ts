@@ -26,7 +26,7 @@ export const en: Translations = {
   hero: {
     status: 'R6 Siege — season build online',
     eyebrow: 'BUILT FOR RAINBOW SIX SIEGE',
-    titleLine1: 'Rainbow Six Siege Cheats — pricing & available',
+    titleLine1: 'Rainbow Six Siege Cheats — pricing & available products',
     titleLine2: '',
     subtitle:
       'Explore Rainbow Six Siege cheat features, available products, and pricing. Compare your options and find the right setup for your needs.',

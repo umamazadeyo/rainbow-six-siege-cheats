@@ -202,7 +202,7 @@ export const commercialBlogPosts: BlogPostFull[] = [
           "Information layer: player ESP, minimap helpers, gadget cues ([R6 ESP guide](/blog/r6-esp-cheats-player-visuals/))",
           "Combat layer: aim assist, recoil profiles ([R6 aimbot guide](/blog/r6-aimbot-features-settings/))",
           "Cosmetic layer: local unlock preview ([R6 unlock all guide](/blog/r6-unlock-all-cosmetic-unlocker/))",
-          "Recovery layer: appeals and spoofing ([UGC](/products/rainbow-six-siege-cheats/ugc/), [HWID](/products/rainbow-six-siege-cheats/hwid-spoofer/))"
+          "Recovery layer: appeals and spoofing ([UGC appeals workspace](/products/rainbow-six-siege-cheats/ugc/), [HWID spoofer utility](/products/rainbow-six-siege-cheats/hwid-spoofer/))"
         ]
       },
       {

@@ -67,6 +67,9 @@ function slugify(text: string): string {
     .replace(/^-|-$/g, '');
 }
 const published = parseBlogDate(post.date);
+const checkoutLabel = `Checkout — ${post.slug.replace(/-/g, ' ').slice(0, 38)}`;
+const hubLabel = `Products hub (${post.tag})`;
+const guidesLabel = `${post.tag} guides index`;
 ---
 
 <BaseLayout
@@ -182,14 +185,14 @@ const published = parseBlogDate(post.date);
 
           <nav class="blog-article__actions" aria-label="Continue reading">
             <Button as="a" href={checkoutPath('r6')} variant="primary" aria-label={t.ui.checkoutAria}>
-              Buy Rainbow Six Siege Cheats
+              {checkoutLabel}
               <Icon name="arrowRight" size={17} />
             </Button>
             <Button as="a" href={ROUTES.products} variant="outline">
-              Open R6 product hub
+              {hubLabel}
             </Button>
             <Button as="a" href={ROUTES.blog} variant="outline">
-              Return to guides index
+              {guidesLabel}
               <Icon name="arrowRight" size={17} />
             </Button>
           </nav>

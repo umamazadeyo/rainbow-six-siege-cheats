@@ -33,7 +33,7 @@ const sourceTimestamp = (path?: string) => {
           <h1>Join R6 Siege players to discuss operators — Rainbow Six Siege Community Forum</h1>
           <p class="forum-hero__copy">Practical answers on ESP tuning, loader setup, patch updates, and product choices.</p>
         </div>
-        <a class="forum-create" href="/blog/"><Icon name="messageCircle" size={17} /> Explore the guides</a>
+        <a class="forum-create" href="/blog/"><Icon name="messageCircle" size={17} /> Open guides index</a>
       </header>
 
       <div class="forum-layout">
@@ -78,8 +78,8 @@ const sourceTimestamp = (path?: string) => {
                   {post.sourceTitle && <p class="forum-source">From the guide: <a href={post.sourcePath}>{post.sourceTitle}</a></p>}
                   <div class="forum-post-actions">
                     {post.flair && <span class={`forum-flair tone-${post.categoryTone}`}>{post.flair}</span>}
-                    <a href={`/forum/${post.slug}/`}><Icon name="messageCircle" size={15} /> {post.commentsCount} comments</a>
-                    <a href={`/forum/${post.slug}/`}><Icon name="arrowRight" size={15} /> Read discussion</a>
+                    <a href={`/forum/${post.slug}/`}><Icon name="messageCircle" size={15} /> {post.commentsCount} replies — {post.slug.slice(0, 24)}</a>
+                    <a href={`/forum/${post.slug}/`}><Icon name="arrowRight" size={15} /> Thread: {post.title.slice(0, 42)}{post.title.length > 42 ? '…' : ''}</a>
                   </div>
                 </div>
               </article>
@@ -101,14 +101,14 @@ const sourceTimestamp = (path?: string) => {
               <div class="forum-about__title"><span class="forum-community-avatar forum-community-avatar--brand"><img src="/images/blog/r6favicon.png" alt="R6SiegeCheat" width="34" height="34" /></span><h2>R6SiegeCheat Community</h2></div>
               <p>A home for Rainbow Six Siege players to compare setups, learn from guides, and discuss patch-day workflows.</p>
               <div class="forum-stats"><span><b>{forumPosts.length}</b> guide discussions</span><span><b>{forumCategories.length}</b> topics</span></div>
-              <a class="forum-join" href="/blog/">Explore all guides</a>
+              <a class="forum-join" href="/blog/">Browse patch guides</a>
             </div>
           </section>
           <section class="forum-side-card" id="communities">
             <h2 class="forum-side-heading">Communities</h2>
             <ul class="forum-community-list">
               {forumCategories.map((category, index) => (
-                <li><a href={`/forum/?category=${categoryKey(category.name)}`}><span class={`forum-community-avatar tone-${category.tone}`} aria-hidden="true"><Icon name={category.icon} size={15} /></span><span><b>{category.name}</b><small>Browse related Q&amp;A</small></span><Icon name="chevronRight" size={15} /></a></li>
+                <li><a href={`/forum/?category=${categoryKey(category.name)}`}><span class={`forum-community-avatar tone-${category.tone}`} aria-hidden="true"><Icon name={category.icon} size={15} /></span><span><b>{category.name}</b><small>Open {category.name} Q&amp;A</small></span><Icon name="chevronRight" size={15} /></a></li>
               ))}
             </ul>
             <a class="forum-text-link" href="#communities">Browse all communities <Icon name="arrowRight" size={14} /></a>
@@ -118,7 +118,9 @@ const sourceTimestamp = (path?: string) => {
             <ol><li>Keep it friendly and constructive</li><li>Stay on topic and add context</li><li>Mark spoilers and sensitive content</li></ol>
             <a href="#community-guidelines">Read the full guidelines <Icon name="arrowRight" size={14} /></a>
           </section>
-          <p class="forum-sidebar-foot">About · Guidelines · Privacy · Terms<br />© {new Date().getFullYear()} R6SiegeCheat Community</p>
+          <p class="forum-sidebar-foot">
+            <a href="/about/">About R6SiegeCheat</a> · <a href="#community-guidelines">Guidelines</a> · <a href="/privacy/">Privacy policy</a> · <a href="/terms/">Terms of use</a><br />© {new Date().getFullYear()} R6SiegeCheat Community
+          </p>
         </aside>
       </div>
     </div>

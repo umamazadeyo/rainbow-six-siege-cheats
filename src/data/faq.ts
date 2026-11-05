@@ -34,7 +34,37 @@ const eliteCheckout = link('Elite checkout page', productPath('elite'));
 const eliteModules = link('Elite combat modules', productPath('elite'));
 const eliteBots = link('Elite bot automation tier', productPath('elite'));
 const lite = link('Lite tier (ESP suite & ESP)', ROUTES.products);
+const liteAwareness = link('Lite awareness overlays', ROUTES.products);
+const liteEspSuite = link('Lite ESP suite tier', ROUTES.products);
+const liteMap = link('Lite map-control plan', ROUTES.products);
+const liteOnly = link('Lite-only storefront', ROUTES.products);
+const litePresets = link('Lite ranked presets', ROUTES.products);
+const liteFov = link('Lite FOV tooling', ROUTES.products);
+const liteStream = link('Lite stream-safe mode', ROUTES.products);
+const liteDocs = link('Lite product documentation', ROUTES.products);
+const liteBlog = link('Lite tier guides', ROUTES.products);
+const liteCompare = link('Lite tier comparison', ROUTES.products);
 const pro = link('Pro tier (scripts included)', ROUTES.products);
+const proScripts = link('Pro script automation', ROUTES.products);
+const proCombat = link('Pro combat script tier', ROUTES.products);
+const proRecoil = link('Pro recoil modules', ROUTES.products);
+const proRanked = link('Pro ranked scripts', ROUTES.products);
+const proStream = link('Pro stream-safe scripts', ROUTES.products);
+const proBlog = link('Pro script guides', ROUTES.products);
+const proCompare = link('Pro vs Lite comparison', ROUTES.products);
+const proTurbo = link('Pro Turbo presets', ROUTES.products);
+const eliteStream = link('Elite stream-safe build', productPath('elite'));
+const eliteSkin = link('Elite Skin Changer bundle', productPath('elite'));
+const eliteRanked = link('Elite ranked automation', productPath('elite'));
+const eliteDocs = link('Elite feature documentation', productPath('elite'));
+const eliteCheckoutPanel = link('Elite checkout panel', productPath('elite'));
+const eliteCombat = link('Elite combat feature map', productPath('elite'));
+const hwidUtility = link('HWID spoofer utility page', productPath('hwid-spoofer'));
+const hwidRecovery = link('HWID recovery workflow', productPath('hwid-spoofer'));
+const ugcAppeals = link('UGC appeals workspace', productPath('ugc'));
+const ugcCases = link('UGC case tracking', productPath('ugc'));
+const skinPreview = link('Operator Skins preview', productPath('unlock-all'));
+const skinCosmetic = link('Skin Changer cosmetic tier', productPath('unlock-all'));
 const productsHub = link('Rainbow Six Siege products', ROUTES.products);
 const productsCatalog = link('R6 Siege products catalog', ROUTES.products);
 const productsOverview = link('products overview hub', ROUTES.products);
@@ -86,14 +116,14 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'products',
     icon: 'faqProductsPage',
     q: 'Where are products and utilities listed?',
-    a: `${productsHub} lists cheat tiers, ${hwid}, ${ugc}, and ${skin} with feature lists and checkout via our partner.`,
+    a: `${productsHub} lists cheat tiers, ${hwidUtility}, ${ugcAppeals}, and ${skinCosmetic} with feature lists and checkout via our partner.`,
   },
   {
     id: 'what-is-esp',
     topic: 'esp',
     icon: 'faqWhatIsEsp',
     q: 'What is Rainbow Six Siege ESP suite / ESP?',
-    a: `ESP suite and operator ESP show defender positions, gadgets and rotates through walls. ${lite} covers awareness overlays. ${pro} and ${elite} add combat modules on top.`,
+    a: `ESP suite and operator ESP show defender positions, gadgets and rotates through walls. ${liteAwareness} covers awareness overlays. ${proScripts} and ${eliteModules} add combat modules on top.`,
     scopes: ['lite', 'pro', 'elite'],
   },
   {
@@ -101,14 +131,14 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'esp',
     icon: 'faqEspVsScripts',
     q: 'What is the difference between ESP suite and scripts?',
-    a: `ESP suite and ESP are information overlays—they do not cast abilities. Recoil control, Trigger timing and Smart Cast are scripts on ${pro} and ${elite}. You can run awareness-only on ${lite}.`,
+    a: `ESP suite and ESP are information overlays—they do not cast abilities. Recoil control, Trigger timing and Smart Cast are scripts on ${proCombat} and ${eliteCombat}. You can run awareness-only on ${liteEspSuite}.`,
   },
   {
     id: 'which-tier-esp',
     topic: 'plans',
     icon: 'faqWhichTierEsp',
     q: 'Which tier do I need for ESP suite only?',
-    a: `${lite} is awareness only: operator ESP, gadget locator, rotate timers and FOV tools. ${pro} adds scripts. ${elite} adds bots, kill steal and Skin Changer.`,
+    a: `${liteMap} is awareness only: operator ESP, gadget locator, rotate timers and FOV tools. ${proRanked} adds scripts. ${eliteBots} adds bots, kill steal and Skin Changer.`,
     scopes: ['lite'],
   },
   {
@@ -116,7 +146,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'scripts',
     icon: 'faqWhichTierScripts',
     q: 'Which tier includes Recoil control scripts?',
-    a: `${pro} ships Recoil control, Trigger timing, Smart Cast and Activator. ${elite} includes everything in Pro plus Utility automation and Trigger assist. ${lite} has no script automation.`,
+    a: `${proRecoil} ships Recoil control, Trigger timing, Smart Cast and Activator. ${eliteRanked} includes everything in Pro plus Utility automation and Trigger assist. ${liteOnly} has no script automation.`,
     scopes: ['pro'],
   },
   {
@@ -124,7 +154,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqRankTiers',
     q: 'How do you rank Lite vs Pro vs Elite?',
-    a: `Map awareness only → ${lite}. Ranked gunfights with scripts → ${pro}. Full bot suite and priority patches → ${eliteBots}. Compare on each cheat page or the ${faqPage}.`,
+    a: `Map awareness only → ${liteCompare}. Ranked gunfights with scripts → ${proCompare}. Full bot suite and priority patches → ${eliteBots}. Compare on each cheat page or the ${faqPage}.`,
   },
   {
     id: 'elite-slots',
@@ -139,7 +169,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'esp',
     icon: 'faqStreamProof',
     q: 'Can OBS capture my overlay?',
-    a: `Stream-proof mode on ${lite}, ${pro} and ${elite} hides overlays from OBS and Discord share. Test a local recording before going live.`,
+    a: `Stream-proof mode on ${liteStream}, ${proStream} and ${eliteStream} hides overlays from OBS and Discord share. Test a local recording before going live.`,
   },
   {
     id: 'live-status',
@@ -160,7 +190,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'products',
     icon: 'faqHwidWhen',
     q: 'When do I need the HWID Spoofer?',
-    a: `Use ${hwid} when fresh Ubisoft Connect accounts fail instantly on one PC but work elsewhere—hardware enforcement. Not for account-only BattlEye cases; see ${ugc} instead.`,
+    a: `Use ${hwidRecovery} when fresh Ubisoft Connect accounts fail instantly on one PC but work elsewhere—hardware enforcement. Not for account-only BattlEye cases; see ${ugcCases} instead.`,
     scopes: ['hwid-spoofer'],
   },
   {
@@ -168,7 +198,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'products',
     icon: 'faqUgcWhat',
     q: 'What is UGC?',
-    a: `${ugc} (Unban & Governance Control) is an appeal workspace for Ubisoft Connect restrictions and BattlEye bans—custom workflows and case tracking, not a guaranteed unban service.`,
+    a: `${ugcAppeals} (Unban & Governance Control) is an appeal workspace for Ubisoft Connect restrictions and BattlEye bans—custom workflows and case tracking, not a guaranteed unban service.`,
     scopes: ['ugc'],
   },
   {
@@ -176,7 +206,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'products',
     icon: 'faqSkinChanger',
     q: 'Does Skin Changer modify my Ubisoft Connect inventory?',
-    a: `${skin} previews cosmetics locally on your client. Other players see your real inventory. Included with ${elite}; available standalone for cosmetic preview only.`,
+    a: `${skinPreview} previews cosmetics locally on your client. Other players see your real inventory. Included with ${eliteSkin}; available standalone for cosmetic preview only.`,
     scopes: ['unlock-all'],
   },
   {
@@ -191,7 +221,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'blog',
     icon: 'faqBlogVsCheats',
     q: 'Are blog cheat codes the same as ranked cheats?',
-    a: `No. Blog articles about Ubisoft console commands apply only in custom lobbies with cheats enabled. Ranked R6 Siege cheats are separate products—see ${lite}, ${pro} and ${elite}.`,
+    a: `No. Blog articles about Ubisoft console commands apply only in custom lobbies with cheats enabled. Ranked R6 Siege cheats are separate products—see ${liteBlog}, ${proBlog} and ${eliteDocs}.`,
   },
   {
     id: 'blog-setup',
@@ -212,7 +242,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqWhoLite',
     q: 'Who should stay on Lite?',
-    a: `Players who only want map awareness—ESP, wards, runes—and will not touch script automation. If you keep enabling combo scripts, buy ${pro} instead.`,
+    a: `Players who only want map awareness—ESP, wards, runes—and will not touch script automation. If you keep enabling combo scripts, buy ${proScripts} instead.`,
     scopes: ['lite'],
   },
   {
@@ -250,14 +280,14 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqTurboRanked',
     q: 'Do tiers work in Turbo and ranked?',
-    a: `Yes—${lite}, ${pro} and ${elite} include Turbo and ranked presets in the portal. Tune distance caps and script delay before your first queue.`,
+    a: `Yes—${litePresets}, ${proTurbo} and ${eliteCheckout} include Turbo and ranked presets in the portal. Tune distance caps and script delay before your first queue.`,
   },
   {
     id: 'zoom-hack',
     topic: 'esp',
     icon: 'faqZoomHack',
     q: 'Which tier includes FOV tools?',
-    a: `FOV tools ships on ${lite} and carries through ${pro} and ${elite}. Extended camera helps lane vision without ward investment.`,
+    a: `FOV tools ships on ${liteFov} and carries through ${proRanked} and ${eliteModules}. Extended camera helps lane vision without ward investment.`,
     scopes: ['lite'],
   },
   {
@@ -265,7 +295,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'scripts',
     icon: 'faqAutoFarm',
     q: 'Which tier includes Utility automation?',
-    a: `Utility automation, Lane Control AI and Auto Courier Manager are ${eliteCheckout} only. ${pro} covers combat scripts without bot farming.`,
+    a: `Utility automation, Lane Control AI and Auto Courier Manager are ${eliteCheckout} only. ${proCombat} covers combat scripts without bot farming.`,
     scopes: ['elite'],
   },
   {
@@ -367,7 +397,7 @@ const blogTopicFaqs: Record<string, SiteFaqItem[]> = {
       topic: 'blog',
       icon: 'faqBlogGuideTier',
       q: 'Which tier matches this guide?',
-      a: `Awareness guides → ${lite}. Script and combo guides → ${pro}. Bot and kill-steal topics → ${elite}.`,
+      a: `Awareness guides → ${liteDocs}. Script and combo guides → ${proScripts}. Bot and kill-steal topics → ${eliteCheckoutPanel}.`,
     },
     {
       id: 'blog-guide-status',
@@ -408,7 +438,7 @@ const blogTopicFaqs: Record<string, SiteFaqItem[]> = {
       topic: 'blog',
       icon: 'faqBlogDefault1',
       q: 'Where do I complete purchase after reading this guide?',
-      a: `Use the product checkout panel on ${elite}, ${hwid}, ${skin}, or ${ugc}—plans show live USD amounts before Buy now.`,
+      a: `Use the product checkout panel on ${eliteCheckoutPanel}, ${hwidUtility}, ${skinPreview}, or ${ugcCases}—plans show live USD amounts before Buy now.`,
     },
     {
       id: 'blog-buying-risk',
@@ -424,7 +454,7 @@ const blogTopicFaqs: Record<string, SiteFaqItem[]> = {
       topic: 'blog',
       icon: 'faqBlogSlugEsp',
       q: 'Are feature articles only for Elite?',
-      a: `Combat features map to ${elite}. Unlock topics map to ${skin}. HWID and UGC articles link to their utility pages when hardware or appeals are the blocker.`,
+      a: `Combat features map to ${eliteCombat}. Unlock topics map to ${skinCosmetic}. HWID and UGC articles link to their utility pages when hardware or appeals are the blocker.`,
     },
   ],
   Updates: [
@@ -444,7 +474,7 @@ const defaultBlogFaqs: SiteFaqItem[] = [
     topic: 'blog',
     icon: 'faqBlogDefault1',
     q: 'Are blog guides official product documentation?',
-    a: `Articles explain workflows and link to ${lite}, ${pro}, ${eliteModules} and ${productsListings}. Feature lists on product pages are authoritative for checkout.`,
+    a: `Articles explain workflows and link to ${liteCompare}, ${proCompare}, ${eliteModules} and ${productsListings}. Feature lists on product pages are authoritative for checkout.`,
   },
   {
     id: 'blog-default-2',
@@ -477,7 +507,7 @@ export function getBlogFaqs(tag: string, slug: string): SiteFaqItem[] {
       topic: 'esp',
       icon: 'faqBlogSlugEsp',
       q: 'Which tier covers ESP suite from this article?',
-      a: `${lite} includes operator ESP, gadget locator and rotate timers. ${pro} adds combat scripts on the same overlay stack.`,
+      a: `${liteEspSuite} includes operator ESP, gadget locator and rotate timers. ${proRecoil} adds combat scripts on the same overlay stack.`,
     });
   }
   if (
@@ -492,7 +522,7 @@ export function getBlogFaqs(tag: string, slug: string): SiteFaqItem[] {
       topic: 'scripts',
       icon: 'faqBlogSlugScripts',
       q: 'Which tier includes the scripts in this article?',
-      a: `${pro} and ${elite} ship Recoil control and related modules. ${lite} is ESP suite only.`,
+      a: `${proTurbo} and ${eliteRanked} ship Recoil control and related modules. ${liteAwareness} is ESP suite only.`,
     });
   }
   if (
@@ -507,7 +537,7 @@ export function getBlogFaqs(tag: string, slug: string): SiteFaqItem[] {
       topic: 'products',
       icon: 'faqBlogSlugHwid',
       q: 'Does this article replace HWID or UGC products?',
-      a: `Recovery guides complement ${hwid} and ${ugc}—read product pages for workflow scope and realistic outcomes.`,
+      a: `Recovery guides complement ${hwidRecovery} and ${ugcAppeals}—read product pages for workflow scope and realistic outcomes.`,
     });
   }
 
