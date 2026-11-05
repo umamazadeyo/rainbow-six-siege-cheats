@@ -4,9 +4,11 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { resolvePathRedirect } from './redirects.mjs';
 import { resolveCheckoutPathRedirect } from '../src/config/checkout-redirects.mjs';
+import { resolveDistDir, resolveStaticAssetRoot } from './dist-static-root.mjs';
 
 const CANONICAL_HOST = 'r6siegecheat.com';
-const distDir = path.resolve('dist');
+const distDir = resolveDistDir();
+const staticRoot = resolveStaticAssetRoot() ?? distDir;
 const port = Number(process.env.PORT) || 3000;
 
 const MIME = {
@@ -39,8 +41,16 @@ const COMPRESSIBLE = new Set([
   '.webmanifest',
 ]);
 
-if (!fs.existsSync(distDir)) {
-  console.error('Missing dist/ folder. Run npm run build before starting the server.');
+if (!fs.existsSync(staticRoot)) {
+  console.error('Missing dist/ (or dist/client/) output. Run npm run build before starting the server.');
+  process.exit(1);
+}
+
+const indexHtml = path.join(staticRoot, 'index.html');
+if (!fs.existsSync(indexHtml)) {
+  console.error(
+    'dist/ has no index.html (incomplete build). Run: npm run build — or for Cloudflare: npm run build:cloudflare then npm run preview:cloudflare',
+  );
   process.exit(1);
 }
 
@@ -79,8 +89,8 @@ function resolveFile(pathname) {
   if (normalized.endsWith('/')) normalized += 'index.html';
   if (!path.extname(normalized)) normalized += '.html';
 
-  const filePath = path.normalize(path.join(distDir, normalized));
-  if (!filePath.startsWith(distDir)) return null;
+  const filePath = path.normalize(path.join(staticRoot, normalized));
+  if (!filePath.startsWith(staticRoot)) return null;
   return filePath;
 }
 
@@ -184,7 +194,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const fallback = path.join(distDir, '404.html');
+  const fallback = path.join(staticRoot, '404.html');
   if (fs.existsSync(fallback)) {
     sendFile(req, res, fallback, 404);
     return;
@@ -195,5 +205,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, '0.0.0.0', () => {
-  console.log(`Serving ${distDir} on http://0.0.0.0:${port} (gzip/br enabled)`);
+  console.log(`Serving ${staticRoot} on http://0.0.0.0:${port} (gzip/br enabled)`);
 });

@@ -1,6 +1,5 @@
 import type { APIRoute } from 'astro';
 import { buildRssFeed } from '../utils/rss';
-
 export const prerender = true;
 
 export const GET: APIRoute = () =>

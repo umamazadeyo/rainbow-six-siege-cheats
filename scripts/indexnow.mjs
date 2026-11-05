@@ -1,8 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { resolveStaticAssetRoot } from './dist-static-root.mjs';
 
-const root = process.cwd();
-const dist = path.join(root, 'dist');
 const key = process.env.INDEXNOW_KEY?.trim();
 const host = process.env.INDEXNOW_HOST?.trim() || 'r6siegecheat.com';
 
@@ -11,9 +10,10 @@ if (!key) {
   process.exit(0);
 }
 
-const sitemapPath = path.join(dist, 'sitemap.xml');
-if (!fs.existsSync(sitemapPath)) {
-  console.warn('IndexNow: dist/sitemap.xml missing — skipping ping.');
+const staticRoot = resolveStaticAssetRoot();
+const sitemapPath = staticRoot ? path.join(staticRoot, 'sitemap.xml') : null;
+if (!sitemapPath || !fs.existsSync(sitemapPath)) {
+  console.warn('IndexNow: sitemap.xml missing under dist — skipping ping.');
   process.exit(0);
 }
 
@@ -25,7 +25,7 @@ if (urlList.length === 0) {
   process.exit(0);
 }
 
-const keyFile = path.join(dist, `${key}.txt`);
+const keyFile = path.join(staticRoot, `${key}.txt`);
 fs.writeFileSync(keyFile, key, 'utf8');
 
 const payload = {

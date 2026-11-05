@@ -5,6 +5,8 @@ import { pageTitle } from '../../../config/seo';
 import { breadcrumbSchema, productSchema } from '../../../utils/schema';
 import ProductDetail from '../../../components/ProductDetail.astro';
 
+export const prerender = true;
+
 export function getStaticPaths() {
   return getAllProductSlugs().map((slug) => ({ params: { slug } }));
 }

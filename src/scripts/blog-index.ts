@@ -1,9 +1,14 @@
 /** Blog index topic filters + Starwind sort select. */
-export function initBlogIndexFilters(emptyMessage: string) {
+export function initBlogIndexFilters() {
   const grid = document.getElementById('blog-grid');
   const emptyEl = document.getElementById('blog-empty');
   const sortRoot = document.getElementById('blog-sort-select');
   if (!grid) return;
+
+  const emptyMessage =
+    grid.getAttribute('data-empty-message')?.trim() ||
+    emptyEl?.textContent?.trim() ||
+    'No articles match this filter.';
 
   const filters = document.querySelectorAll<HTMLButtonElement>('[data-blog-filter]');
 

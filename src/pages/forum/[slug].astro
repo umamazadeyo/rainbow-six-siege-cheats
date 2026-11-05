@@ -7,6 +7,8 @@ import { forumPosts, getForumPost } from '../../data/forum';
 import { pageTitle } from '../../config/seo';
 import { breadcrumbSchema, discussionForumPostingSchema } from '../../utils/schema';
 
+export const prerender = true;
+
 export function getStaticPaths() {
   return forumPosts.map((post) => ({ params: { slug: post.slug } }));
 }

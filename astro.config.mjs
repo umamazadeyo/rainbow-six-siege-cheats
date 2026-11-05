@@ -3,7 +3,31 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
+/** Set only by `npm run build:cloudflare` / Wrangler `[build].command` — not during `astro dev`. */
+const useCloudflareAdapter = process.env.ASTRO_ADAPTER === 'cloudflare';
+
+/** @type {import('astro').AstroIntegration | undefined} */
+let cloudflareAdapter;
+
+if (useCloudflareAdapter) {
+  try {
+    const { default: cloudflare } = await import('@astrojs/cloudflare');
+    cloudflareAdapter = cloudflare({
+      imageService: 'compile',
+    });
+  } catch {
+    throw new Error(
+      'Cloudflare build requires @astrojs/cloudflare. Install: npm i -D @astrojs/cloudflare wrangler',
+    );
+  }
+}
+
 export default defineConfig({
+  ...(cloudflareAdapter ? { output: 'server', adapter: cloudflareAdapter } : {}),
+  server: {
+    port: Number(process.env.PORT) || 4321,
+    host: true,
+  },
   site: 'https://r6siegecheat.com',
   trailingSlash: 'always',
   redirects: {

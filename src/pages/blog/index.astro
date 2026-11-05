@@ -1,4 +1,7 @@
 ---
+export const prerender = true;
+
+import '../../styles/blog-pages.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {
   blogPosts,
@@ -102,7 +105,11 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
         <BlogSortSelect />
       </div>
 
-      <div id="blog-grid" class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10">
+      <div
+        id="blog-grid"
+        class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10"
+        data-empty-message={t.blog.emptyFilter}
+      >
         {gridPosts.map((post, index) => (
           <BlogCard post={post} index={index} showDate />
         ))}
@@ -121,13 +128,14 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
     </div>
   </section>
 
-  <script define:vars={{ emptyMessage: t.blog.emptyFilter }}>
+  <script>
     import { initBlogIndexFilters } from '../../scripts/blog-index.ts';
 
+    const boot = () => initBlogIndexFilters();
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => initBlogIndexFilters(emptyMessage));
+      document.addEventListener('DOMContentLoaded', boot);
     } else {
-      initBlogIndexFilters(emptyMessage);
+      boot();
     }
   </script>
 </BaseLayout>
