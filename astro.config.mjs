@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 import { buildAstroCheckoutRedirects } from './src/config/checkout-redirects.mjs';
+import { resolveSiteOrigin } from './src/config/siteOrigin.mjs';
 
 /** Set only by `npm run build:cloudflare` / Wrangler `[build].command` — not during `astro dev`. */
 const useCloudflareAdapter = process.env.ASTRO_ADAPTER === 'cloudflare';
@@ -29,7 +30,7 @@ export default defineConfig({
     port: Number(process.env.PORT) || 4321,
     host: true,
   },
-  site: 'https://r6siegecheat.com',
+  site: resolveSiteOrigin(),
   trailingSlash: 'always',
   redirects: {
     ...buildAstroCheckoutRedirects(),

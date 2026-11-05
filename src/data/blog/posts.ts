@@ -4,7 +4,7 @@ import type { BlogPostFull } from './types';
 export const commercialBlogPosts: BlogPostFull[] = [
   {
     "tag": "Buying Guides",
-    "title": "Rainbow Six Siege Cheats: Compare Features, Products & Pricing",
+    "title": "Rainbow Six Siege: Compare Features, Products & Pricing",
     "slug": "rainbow-six-siege-cheats-compare-features-pricing",
     "featured": true,
     "readTime": "3 min read",
@@ -100,7 +100,7 @@ export const commercialBlogPosts: BlogPostFull[] = [
   },
   {
     "tag": "Buying Guides",
-    "title": "Buy R6 Siege Cheats: What to Check Before Choosing a Package",
+    "title": "Rainbow Six Siege — Buy R6 Siege Cheats: What to Check Before Choosing a Package",
     "slug": "buy-r6-siege-cheats-before-you-choose",
     "readTime": "3 min read",
     "date": "Oct 12, 2026",
@@ -166,7 +166,7 @@ export const commercialBlogPosts: BlogPostFull[] = [
   },
   {
     "tag": "Buying Guides",
-    "title": "Best R6 Cheats: Comparing Available Features and Packages",
+    "title": "Rainbow Six Siege — Best R6 Cheats: Comparing Available Features and Packages",
     "slug": "best-r6-cheats-features-packages",
     "readTime": "3 min read",
     "date": "Sep 17, 2026",

@@ -2,7 +2,13 @@ import { t } from '../i18n';
 import { SITE_DOMAIN as INDEXNOW_HOST_NAME } from './site';
 import { getPageSeoEntry } from './pageSeo';
 
-export const SITE_ORIGIN = `https://${t.site.domain}`;
+const envOrigin = import.meta.env.PUBLIC_SITE_ORIGIN as string | undefined;
+
+export const SITE_ORIGIN = (envOrigin?.replace(/\/$/, '') || `https://${t.site.domain}`) as string;
+
+export function getSiteOrigin(): string {
+  return SITE_ORIGIN;
+}
 
 export const DEFAULT_OG_IMAGE = '/images/blog/r6s-multihack-s1.webp';
 
@@ -25,11 +31,12 @@ export function getOrganizationSameAs(): string[] {
 
 export const INDEXNOW_KEY = import.meta.env.INDEXNOW_KEY as string | undefined;
 
-export function canonicalUrl(pathname: string): string {
+export function canonicalUrl(pathname: string, origin: string = SITE_ORIGIN): string {
   let path = pathname || '/';
   if (!path.startsWith('/')) path = `/${path}`;
   if (path !== '/' && !path.endsWith('/')) path = `${path}/`;
-  return `${SITE_ORIGIN}${path}`;
+  const base = origin.replace(/\/$/, '');
+  return `${base}${path}`;
 }
 
 export function absoluteAssetUrl(path: string): string {
@@ -50,6 +57,20 @@ export function pageTitle(keyword: string, brand = t.site.name): string {
   if (`${keyword}${suffix}`.length <= max) return `${keyword}${suffix}`;
   const trimmed = keyword.slice(0, Math.max(20, max - suffix.length - 1)).trim();
   return `${trimmed}${suffix}`;
+}
+
+/** Document `<title>` for blog posts — avoids duplicate brand words and over-long titles. */
+const BLOG_DOCUMENT_TITLES: Record<string, string> = {
+  'rainbow-six-siege-cheats-compare-features-pricing':
+    'Rainbow Six Siege: Compare Features, Products & Pricing',
+  'best-r6-cheats-features-packages': 'Best R6 Cheats: Features and Packages Compared',
+  'buy-r6-siege-cheats-before-you-choose': 'Buy R6: What to Check Before Choosing a Package',
+};
+
+export function blogDocumentTitle(slug: string, postTitle: string): string {
+  const base = BLOG_DOCUMENT_TITLES[slug] ?? postTitle;
+  if (base.length <= 60) return base;
+  return base.slice(0, 60).trim();
 }
 
 export const DEFAULT_OG_IMAGE_WIDTH = 1200;

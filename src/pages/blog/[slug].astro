@@ -3,7 +3,7 @@ import '../../styles/blog-pages.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { t } from '../../i18n';
 import { getAllBlogSlugs, getBlogPost, getRelatedBlogPosts } from '../../data/blog';
-import { pageTitle } from '../../config/seo';
+import { blogDocumentTitle } from '../../config/seo';
 import {
   articleSchema,
   breadcrumbSchema,
@@ -70,7 +70,7 @@ const published = parseBlogDate(post.date);
 ---
 
 <BaseLayout
-  title={pageTitle(post.title)}
+  title={blogDocumentTitle(post.slug, post.title)}
   description={post.desc}
   ogType="article"
   ogImage={post.image}

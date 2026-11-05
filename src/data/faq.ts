@@ -291,7 +291,7 @@ export function getAllFaqs(): SiteFaqItem[] {
 /** Shared FAQ block copy + filters (home, /faq/, products, blog). */
 export const SITE_FAQ_SECTION_COPY = {
   eyebrow: 'All topics',
-  title: 'Browse by category',
+  title: 'Browse by category — Siege Cheats',
   subtitle: 'Filter plans, ESP, aim tools, products, setup and blog answers.',
 } as const;
 

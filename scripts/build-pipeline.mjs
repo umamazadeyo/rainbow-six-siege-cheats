@@ -3,6 +3,19 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { writeCheckoutRedirectsFile } from '../src/config/checkout-redirects.mjs';
 import { resolveStaticAssetRoot } from './dist-static-root.mjs';
+import { resolveSiteOrigin } from '../src/config/siteOrigin.mjs';
+
+function writeRobotsTxt(targetDir) {
+  const origin = resolveSiteOrigin();
+  const robots = `User-agent: *
+Allow: /
+
+Disallow: /go/
+
+Sitemap: ${origin}/sitemap.xml
+`;
+  fs.writeFileSync(path.join(targetDir, 'robots.txt'), robots, 'utf8');
+}
 
 const cloudflare = process.argv.includes('--cloudflare');
 const astroCliCandidates = [
@@ -39,6 +52,11 @@ writeCheckoutRedirectsFile(distDir);
 const staticRoot = resolveStaticAssetRoot();
 if (staticRoot && path.resolve(staticRoot) !== path.resolve(distDir)) {
   writeCheckoutRedirectsFile(staticRoot);
+}
+
+writeRobotsTxt(distDir);
+if (staticRoot && path.resolve(staticRoot) !== path.resolve(distDir)) {
+  writeRobotsTxt(staticRoot);
 }
 
 if (cloudflare) {

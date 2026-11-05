@@ -12,5 +12,8 @@ binding = "ASSETS"
 [build]
 command = "npm run build:cloudflare"
 
+[build.environment]
+PUBLIC_SITE_ORIGIN = "https://rainbow-six-siege-cheats.umaimaroziroti.workers.dev"
+
 [vars]
 # Set secrets in the Cloudflare dashboard; do not commit credentials here.

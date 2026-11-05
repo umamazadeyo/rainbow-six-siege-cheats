@@ -26,7 +26,7 @@ export const en: Translations = {
   hero: {
     status: 'R6 Siege — season build online',
     eyebrow: 'BUILT FOR RAINBOW SIX SIEGE',
-    titleLine1: 'Rainbow Six Siege Cheats',
+    titleLine1: 'Rainbow Six Siege Cheats & Features',
     titleLine2: '',
     subtitle:
       'Explore Rainbow Six Siege cheat features, available products, and pricing. Compare your options and find the right setup for your needs.',
@@ -291,7 +291,7 @@ export const en: Translations = {
     eyebrow: 'Blog',
     title: 'Guides and updates',
     subtitle: 'Buying guides, feature comparisons, setup walkthroughs, and patch-day checks for Rainbow Six Siege cheats.',
-    latestTitle: 'All Blogs',
+    latestTitle: 'Latest guides & patch notes',
     latestSubtitle: 'Filter by topic or sort to find setup guides, feature deep-dives, and patch-day notes.',
     filterAll: 'All articles',
     sortLabel: 'Sort by',
@@ -608,12 +608,13 @@ export const en: Translations = {
     about: {
       title: 'About R6SiegeCheat',
       description:
-        'R6SiegeCheat provides Rainbow Six Siege cheat tiers, utility tools and PC support resources at r6siegecheat.com.',
+        'R6SiegeCheat provides Rainbow Six Siege cheat tiers, utility tools and PC support resources for Ubisoft Connect players.',
       sections: [
         {
           heading: 'Who we are',
           paragraphs: [
             'R6SiegeCheat is a PC-focused resource for Rainbow Six Siege players exploring Aim & Recoil, ESP, FOV tools and Operator Skins workflows. We publish tier comparisons, setup guides, and live status notes so you can evaluate R6 Siege cheats before checkout.',
+            'Editorial updates follow major Siege and BattlEye patches; the homepage status banner reflects loader availability between releases.',
             'All product names are used for identification only.',
           ],
         },
@@ -633,14 +634,15 @@ export const en: Translations = {
       ],
     },
     privacy: {
-      title: 'Privacy Policy',
+      title: 'Privacy Policy — R6 Siege Cheat',
       description:
-        'How R6SiegeCheat handles analytics, cookies, and contact data when you use r6siegecheat.com.',
+        'How R6SiegeCheat handles analytics, cookies, and contact data when you use this website.',
       sections: [
         {
           heading: 'Information we collect',
           paragraphs: [
-            'We may collect standard web analytics such as page views, device type, browser, and approximate region through Google Analytics when enabled. Checkout and license delivery happen on external checkout pages—we do not store payment card data on r6siegecheat.com.',
+            'We may collect standard web analytics such as page views, device type, browser, and approximate region through Google Analytics when enabled. Checkout and license delivery happen on external checkout pages—we do not store payment card data on this site.',
+            'Support messages you send by email or Discord may include account or order details you choose to share; we use them only to resolve your request.',
           ],
         },
         {

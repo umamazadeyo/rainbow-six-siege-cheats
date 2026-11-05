@@ -6,6 +6,7 @@ import {
   TWITTER_CREATOR,
   TWITTER_SITE,
   canonicalUrl,
+  getSiteOrigin,
   DEFAULT_OG_IMAGE,
   DEFAULT_OG_IMAGE_HEIGHT,
   DEFAULT_OG_IMAGE_WIDTH,
@@ -40,7 +41,12 @@ const {
   jsonLd,
 } = Astro.props;
 
-const canonical = canonicalUrl(Astro.url.pathname);
+const requestOrigin = Astro.url.origin;
+const canonicalOrigin =
+  requestOrigin && !/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(requestOrigin)
+    ? requestOrigin
+    : getSiteOrigin();
+const canonical = canonicalUrl(Astro.url.pathname, canonicalOrigin);
 const ogImageUrl = absoluteAssetUrl(ogImage);
 const robotsContent = noindex
   ? 'noindex, nofollow'

@@ -10,7 +10,7 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    title: 'Rainbow Six Siege Cheats & Features | R6 Siege Cheat',
+    title: 'Rainbow Six Siege Cheats & Features | R6 Cheat',
     description:
       'Explore Rainbow Six Siege cheats, features, pricing and available products. Compare R6 cheat options and find the right package for you.',
   },
@@ -20,9 +20,9 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Read and share customer reviews for Rainbow Six Siege cheats, utilities and support at r6siegecheat.com.',
   },
   '/products/rainbow-six-siege-cheats/': {
-    title: 'Rainbow Six Siege Elite Cheats & Utility Products',
+    title: 'Esp Aimbot – R6 Siege Cheats Product Details',
     description:
-      'Elite Rainbow Six Siege cheats plus HWID spoofer, UGC tools, and Skin Changer utilities for Ubisoft Connect ranked on r6siegecheat.com.',
+      'Undetected RAINBOW SIX SIEGE cheats with player ESP, aimbot, and recoil control. Monthly and lifetime access. Updated for current patches.',
   },
   '/products/rainbow-six-siege-cheats/elite/': {
     title: 'Rainbow Six Siege Elite Cheats | Bots & Full Map Hack',
@@ -35,18 +35,19 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Choose HWID Spoofer, UGC, or Skin Changer—when each utility fits and links to full product pages.',
   },
   '/blog/': {
-    title: 'Rainbow Six Siege Cheats Guides & Patch Notes',
+    title: 'Blogs – Rainbow Six Siege Cheats Guides & Patch Notes',
     description:
-      'Setup guides, Lite vs Pro comparisons, BattlEye patch checklists, and ranked config tips for R6 Siege cheats.',
+      'Blogs: Setup guides, Lite vs Pro comparisons, BattlEye patch checklists, and ranked config tips for R6 Siege cheats.',
   },
   '/forum/': {
-    title: 'Rainbow Six Siege Community Forum | R6SiegeCheat',
-    description: 'Join R6 Siege players to discuss operators, strats, patch changes, guides, and community moments.',
+    title: 'Community – Join R6 players to discuss operators',
+    description:
+      'Join R6 Siege players to discuss operators, strats, patch changes, guides, and community moments. Rainbow Six Siege community forum at R6SiegeCheat.',
   },
   '/faq/': {
-    title: 'FAQ | Rainbow Six Siege Cheats, Products & Setup',
+    title: 'Siege Cheats – FAQ | Products, Setup & Checkout',
     description:
-      'Answers on cheat tiers, map hack, scripts, HWID tools, checkout, and blog guides at r6siegecheat.com.',
+      'Siege Cheats: Answers on cheat tiers, map hack, scripts, HWID tools, checkout, and blog guides at r6siegecheat.com.',
   },
   '/terms/': {
     title: 'Terms & Conditions | R6SiegeCheat',
@@ -54,14 +55,14 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Purchase terms, license use, and refund policy for R6SiegeCheat products sold through r6siegecheat.com.',
   },
   '/privacy/': {
-    title: 'Privacy Policy | R6SiegeCheat',
+    title: 'Privacy – analytics, cookies & contact data | R6SiegeCheat',
     description:
-      'How r6siegecheat.com uses analytics, cookies, and contact data when you browse or request support.',
+      'Privacy: How r6siegecheat.com uses analytics, cookies, and contact data when you browse or request support.',
   },
   '/about/': {
-    title: 'About R6SiegeCheat',
+    title: 'R6siegecheat – tier comparisons, setup guides & status',
     description:
-      'What R6SiegeCheat publishes: Rainbow Six Siege cheat tiers, utilities, guides, and status notes at r6siegecheat.com.',
+      'What R6SiegeCheat publishes: Rainbow Six Siege cheat tiers, utilities, guides, and live status notes for PC players at r6siegecheat.com.',
   },
   '/support/': {
     title: 'Support | R6SiegeCheat',

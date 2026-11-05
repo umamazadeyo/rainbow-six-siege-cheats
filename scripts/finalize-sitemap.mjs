@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { listSitemapShards, resolveDistDir, resolveStaticAssetRoot } from './dist-static-root.mjs';
+import { resolveSiteOrigin } from '../src/config/siteOrigin.mjs';
 
-const siteOrigin = 'https://r6siegecheat.com';
+const siteOrigin = resolveSiteOrigin();
 const staticRoot = resolveStaticAssetRoot();
 
 if (!staticRoot) {
@@ -30,7 +31,11 @@ for (const shardPath of shards) {
   for (const block of raw.match(/<url>[\s\S]*?<\/url>/gi) ?? []) {
     const locMatch = block.match(/<loc>([^<]+)<\/loc>/i);
     if (!locMatch) continue;
-    urlBlocks.set(locMatch[1].trim(), block.trim());
+    const pathname = new URL(locMatch[1].trim()).pathname;
+    const normalizedPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
+    const loc = `${siteOrigin}${normalizedPath === '/' ? '/' : normalizedPath}`;
+    const rewritten = block.replace(/<loc>[^<]+<\/loc>/i, `<loc>${loc}</loc>`);
+    urlBlocks.set(loc, rewritten.trim());
   }
 }
 
