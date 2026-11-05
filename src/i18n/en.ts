@@ -631,10 +631,16 @@ export const en: Translations = {
             'Questions about compatibility, loader errors, or checkout are handled through Discord and email support. Include your order email, Ubisoft Connect account, and Windows version when opening a ticket.',
           ],
         },
+        {
+          heading: 'Editorial standards',
+          paragraphs: [
+            'Product pages list live modules and pricing; blog posts document patch-day checks and setup paths. We update copy when loader status or checkout flows change.',
+          ],
+        },
       ],
     },
     privacy: {
-      title: 'Privacy Policy — R6 Siege Cheat',
+      title: 'Privacy — analytics, cookies & contact data | R6 Siege Cheat',
       description:
         'How R6SiegeCheat handles analytics, cookies, and contact data when you use this website.',
       sections: [
@@ -661,6 +667,12 @@ export const en: Translations = {
           heading: 'Support',
           paragraphs: [
             'For privacy questions, use the options on the Support page. Purchase and refund rules are in our Terms & Conditions.',
+          ],
+        },
+        {
+          heading: 'Your choices',
+          paragraphs: [
+            'You can disable analytics cookies in your browser, opt out of non-essential tracking where offered, and request deletion of support correspondence after your ticket is closed.',
           ],
         },
       ],

@@ -31,11 +31,18 @@ export function getOrganizationSameAs(): string[] {
 
 export const INDEXNOW_KEY = import.meta.env.INDEXNOW_KEY as string | undefined;
 
-export function canonicalUrl(pathname: string, origin: string = SITE_ORIGIN): string {
+function resolveSiteBase(origin?: string): string {
+  if (origin) return origin.replace(/\/$/, '');
+  const site = import.meta.env.SITE as string | undefined;
+  if (site?.trim()) return site.replace(/\/$/, '');
+  return SITE_ORIGIN.replace(/\/$/, '');
+}
+
+export function canonicalUrl(pathname: string, origin?: string): string {
   let path = pathname || '/';
   if (!path.startsWith('/')) path = `/${path}`;
   if (path !== '/' && !path.endsWith('/')) path = `${path}/`;
-  const base = origin.replace(/\/$/, '');
+  const base = resolveSiteBase(origin);
   return `${base}${path}`;
 }
 
@@ -63,8 +70,8 @@ export function pageTitle(keyword: string, brand = t.site.name): string {
 const BLOG_DOCUMENT_TITLES: Record<string, string> = {
   'rainbow-six-siege-cheats-compare-features-pricing':
     'Rainbow Six Siege: Compare Features, Products & Pricing',
-  'best-r6-cheats-features-packages': 'Best R6 Cheats: Features and Packages Compared',
-  'buy-r6-siege-cheats-before-you-choose': 'Buy R6: What to Check Before Choosing a Package',
+  'best-r6-cheats-features-packages': 'Best R6 Cheats – features, utilities & packages compared',
+  'buy-r6-siege-cheats-before-you-choose': 'Buy R6 – checklist before choosing a Siege package',
 };
 
 export function blogDocumentTitle(slug: string, postTitle: string): string {

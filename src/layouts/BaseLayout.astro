@@ -41,11 +41,13 @@ const {
   jsonLd,
 } = Astro.props;
 
+const siteFromConfig = import.meta.env.SITE?.replace(/\/$/, '');
 const requestOrigin = Astro.url.origin;
 const canonicalOrigin =
-  requestOrigin && !/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(requestOrigin)
+  siteFromConfig ||
+  (requestOrigin && !/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(requestOrigin)
     ? requestOrigin
-    : getSiteOrigin();
+    : getSiteOrigin());
 const canonical = canonicalUrl(Astro.url.pathname, canonicalOrigin);
 const ogImageUrl = absoluteAssetUrl(ogImage);
 const robotsContent = noindex

@@ -54,11 +54,6 @@ if (staticRoot && path.resolve(staticRoot) !== path.resolve(distDir)) {
   writeCheckoutRedirectsFile(staticRoot);
 }
 
-writeRobotsTxt(distDir);
-if (staticRoot && path.resolve(staticRoot) !== path.resolve(distDir)) {
-  writeRobotsTxt(staticRoot);
-}
-
 if (cloudflare) {
   const distDir = path.join(process.cwd(), 'dist');
   const clientDir = path.join(distDir, 'client');
@@ -66,10 +61,21 @@ if (cloudflare) {
   if (fs.existsSync(path.join(assetsDir, '_worker.js'))) {
     fs.writeFileSync(path.join(assetsDir, '.assetsignore'), '_worker.js\n', 'utf8');
   }
+  run('patch-cloudflare-routes', process.execPath, ['scripts/patch-cloudflare-routes.mjs']);
 }
 
 run('prune-dist-images', process.execPath, ['scripts/prune-dist-images.mjs']);
 run('finalize-sitemap', process.execPath, ['scripts/finalize-sitemap.mjs']);
+
+writeRobotsTxt(distDir);
+if (staticRoot && path.resolve(staticRoot) !== path.resolve(distDir)) {
+  writeRobotsTxt(staticRoot);
+}
+
+if (cloudflare) {
+  run('patch-cloudflare-routes', process.execPath, ['scripts/patch-cloudflare-routes.mjs']);
+}
+
 run('indexnow', process.execPath, ['scripts/indexnow.mjs']);
 
 console.log(cloudflare ? 'Cloudflare build pipeline complete.' : 'Production build pipeline complete.');

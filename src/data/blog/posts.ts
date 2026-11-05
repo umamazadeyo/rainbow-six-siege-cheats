@@ -166,7 +166,7 @@ export const commercialBlogPosts: BlogPostFull[] = [
   },
   {
     "tag": "Buying Guides",
-    "title": "Rainbow Six Siege — Best R6 Cheats: Comparing Available Features and Packages",
+    "title": "Rainbow Six Siege — Best R6 Cheats: Features and Packages Compared",
     "slug": "best-r6-cheats-features-packages",
     "readTime": "3 min read",
     "date": "Sep 17, 2026",
