@@ -71,6 +71,19 @@ const robotsContent = noindex
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style is:inline>
+      /* Responsive breakpoints (inline for crawlers; full rules in bundled CSS). */
+      @media (max-width: 767.98px) {
+        html {
+          -webkit-text-size-adjust: 100%;
+        }
+      }
+      @media (min-width: 768px) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+    </style>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={t.site.name} />

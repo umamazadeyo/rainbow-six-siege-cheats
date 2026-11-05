@@ -751,7 +751,7 @@ export const en: Translations = {
     skipLink: 'Skip to main content',
     browseCheats: 'Try Now',
     browseCheatsMobile: 'Start checkout',
-    homeAria: 'R6SiegeCheat home',
+    homeAria: 'R6SiegeCheat — header home',
     checkoutAria: 'Start checkout',
     discordAria: 'Join R6SiegeCheat on Discord',
     menuOpen: 'Open menu',

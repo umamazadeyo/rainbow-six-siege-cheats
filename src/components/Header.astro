@@ -26,6 +26,17 @@ const navIcons: Record<string, IconName> = {
 };
 
 const purchaseUrl = checkoutPath('r6');
+
+/** Mobile drawer only — unique anchor text vs desktop nav (same hrefs, SEO). */
+const mobileNavLabels: Record<string, string> = {
+  Home: 'Home overview',
+  Products: 'Product lineup',
+  Review: 'Review hub',
+  Blog: 'Blog guides',
+  Forum: 'Player forum',
+  FAQ: 'Help & FAQ',
+  Support: 'Support desk',
+};
 ---
 
 <header class="pointer-events-none fixed inset-x-0 top-0 z-50">
@@ -33,7 +44,11 @@ const purchaseUrl = checkoutPath('r6');
     <div
       class="pointer-events-auto relative flex h-14 w-full max-w-6xl items-center justify-between gap-3 rounded-2xl border border-border/40 bg-background/35 px-4 text-foreground shadow-md shadow-black/5 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/25 dark:border-white/10 dark:bg-background/20 dark:shadow-black/25 sm:px-5 lg:h-[3.75rem]"
     >
-    <a href="/" class="inline-flex min-w-0 items-center font-[family-name:var(--font-heading)] text-lg font-bold tracking-wide" aria-label={t.ui.homeAria}>
+    <a
+      href="/"
+      class="inline-flex min-w-0 items-center font-[family-name:var(--font-heading)] text-lg font-bold tracking-wide"
+      aria-label={t.ui.homeAria}
+    >
       <span class="truncate" aria-hidden="true">R6<span class="text-primary">Siege</span>Cheat</span>
     </a>
 
@@ -82,7 +97,7 @@ const purchaseUrl = checkoutPath('r6');
                 {...(link.scrollTarget ? { 'data-scroll-target': link.scrollTarget } : {})}
               >
                 <Icon name={navIcons[link.label] ?? 'navFeatures'} size={16} />
-                {link.label}
+                {mobileNavLabels[link.label] ?? link.label}
               </a>
             ))}
           </nav>
