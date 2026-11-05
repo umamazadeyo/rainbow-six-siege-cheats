@@ -26,7 +26,7 @@ export const en: Translations = {
   hero: {
     status: 'R6 Siege — season build online',
     eyebrow: 'BUILT FOR RAINBOW SIX SIEGE',
-    titleLine1: 'Rainbow Six Siege Cheats & Features',
+    titleLine1: 'Rainbow Six Siege Cheats — pricing & available',
     titleLine2: '',
     subtitle:
       'Explore Rainbow Six Siege cheat features, available products, and pricing. Compare your options and find the right setup for your needs.',
@@ -615,14 +615,16 @@ export const en: Translations = {
           paragraphs: [
             'R6SiegeCheat is a PC-focused resource for Rainbow Six Siege players exploring Aim & Recoil, ESP, FOV tools and Operator Skins workflows. We publish tier comparisons, setup guides, and live status notes so you can evaluate R6 Siege cheats before checkout.',
             'Editorial updates follow major Siege and BattlEye patches; the homepage status banner reflects loader availability between releases.',
+            'This about page summarizes who runs r6siegecheat, what each product tier covers, and how support fits into your purchase decision—without replacing the live module lists on individual product pages.',
             'All product names are used for identification only.',
           ],
         },
         {
           heading: 'What we publish',
           paragraphs: [
-            'Our site covers Elite combat access and utility products, HWID utilities, Operator Skins and account recovery workflows. Blog articles explain ranked-safe configs, patch-day checks, and BattlEye update behavior.',
+            'Our site covers Elite combat access and utility products, HWID utilities, Operator Skins and account recovery workflows. Guides explain ranked-safe configs, patch-day checks, and BattlEye update behavior.',
             'Content is updated when patches land or when loader modules shift. Check the homepage status banner and Discord #status before every session.',
+            'If you are comparing vendors, start with the products hub and FAQ, then open support only after you have your Windows build, Ubisoft Connect region, and order email ready.',
           ],
         },
         {
@@ -649,6 +651,7 @@ export const en: Translations = {
           paragraphs: [
             'We may collect standard web analytics such as page views, device type, browser, and approximate region through Google Analytics when enabled. Checkout and license delivery happen on external checkout pages—we do not store payment card data on this site.',
             'Support messages you send by email or Discord may include account or order details you choose to share; we use them only to resolve your request.',
+            'This privacy summary describes how r6siegecheat handles browsing data on our own pages; partner checkout sites publish separate policies for payment and license delivery.',
           ],
         },
         {
@@ -673,6 +676,7 @@ export const en: Translations = {
           heading: 'Your choices',
           paragraphs: [
             'You can disable analytics cookies in your browser, opt out of non-essential tracking where offered, and request deletion of support correspondence after your ticket is closed.',
+            'For privacy questions about stored support threads, reference your ticket date and the email address you used so we can locate the conversation quickly.',
           ],
         },
       ],

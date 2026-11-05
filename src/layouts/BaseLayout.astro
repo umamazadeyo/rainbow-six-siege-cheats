@@ -82,10 +82,10 @@ const robotsContent = noindex
     <link
       rel="alternate"
       type="application/rss+xml"
-      title={`${t.site.name} Blog RSS`}
-      href={RSS_FEED_PATH}
+      title={`${t.site.name} Guides RSS`}
+      href={canonicalOrigin + RSS_FEED_PATH}
     />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href={`${canonicalOrigin}/sitemap.xml`} />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="icon" type="image/png" href="/images/blog/r6favicon.png" />
     <link rel="shortcut icon" href="/images/blog/r6favicon.png" />

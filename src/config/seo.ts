@@ -3,8 +3,14 @@ import { SITE_DOMAIN as INDEXNOW_HOST_NAME } from './site';
 import { getPageSeoEntry } from './pageSeo';
 
 const envOrigin = import.meta.env.PUBLIC_SITE_ORIGIN as string | undefined;
+const siteBuild = import.meta.env.SITE as string | undefined;
 
-export const SITE_ORIGIN = (envOrigin?.replace(/\/$/, '') || `https://${t.site.domain}`) as string;
+/** Must match `<link rel="canonical">` (Astro `site` first). */
+export const SITE_ORIGIN = (
+  siteBuild?.replace(/\/$/, '') ||
+  envOrigin?.replace(/\/$/, '') ||
+  `https://${t.site.domain}`
+) as string;
 
 export function getSiteOrigin(): string {
   return SITE_ORIGIN;

@@ -12,6 +12,7 @@ if (!fs.existsSync(routesPath)) {
 /** @type {{ version: number; include: string[]; exclude: string[] }} */
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
 const mustExclude = [
+  '/robots.txt',
   '/sitemap.xml',
   '/sitemap-index.xml',
   '/sitemap-0.xml',

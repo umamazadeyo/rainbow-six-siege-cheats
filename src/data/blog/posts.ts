@@ -100,7 +100,7 @@ export const commercialBlogPosts: BlogPostFull[] = [
   },
   {
     "tag": "Buying Guides",
-    "title": "Rainbow Six Siege — Buy R6 Siege Cheats: What to Check Before Choosing a Package",
+    "title": "Rainbow Six Siege — Buy R6 checklist: What to Check Before Choosing a Package",
     "slug": "buy-r6-siege-cheats-before-you-choose",
     "readTime": "3 min read",
     "date": "Oct 12, 2026",
@@ -166,7 +166,7 @@ export const commercialBlogPosts: BlogPostFull[] = [
   },
   {
     "tag": "Buying Guides",
-    "title": "Rainbow Six Siege — Best R6 Cheats: Features and Packages Compared",
+    "title": "Rainbow Six Siege — Best R6 Cheats: utilities, Features and Packages Compared",
     "slug": "best-r6-cheats-features-packages",
     "readTime": "3 min read",
     "date": "Sep 17, 2026",

@@ -37,7 +37,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/blog/': {
     title: 'Blogs – Rainbow Six Siege Cheats Guides & Patch Notes',
     description:
-      'Blogs: Setup guides, Lite vs Pro comparisons, BattlEye patch checklists, and ranked config tips for R6 Siege cheats on Ubisoft Connect PC.',
+      'Setup guides, Lite vs Pro comparisons, BattlEye patch checklists, and ranked config tips for R6 Siege cheats on Ubisoft Connect PC.',
   },
   '/forum/': {
     title: 'Community – Join R6 Siege players to discuss operators',
@@ -45,7 +45,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Join R6 Siege players to discuss operators, strats, patch changes, guides, and community moments. Rainbow Six Siege community forum at R6SiegeCheat.',
   },
   '/faq/': {
-    title: 'Siege Cheats – FAQ for products, setup & checkout',
+    title: 'Siege Cheats – The live status banner is on r6siegecheat',
     description:
       'Siege Cheats: Answers on cheat tiers, map hack, scripts, HWID tools, checkout, and blog guides at r6siegecheat.com for PC players.',
   },
