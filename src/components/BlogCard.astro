@@ -31,6 +31,10 @@ const href = blogPostPath(post.slug);
 const timestamp = getBlogPostTimestamp(post.date);
 const readMinutes = getBlogReadMinutes(post.readTime);
 const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
+const imageAlt =
+  post.title.length > 80 ? `${post.title.slice(0, 77)}…` : post.title;
+const readLabel =
+  post.title.length > 40 ? `Read: ${post.title.slice(0, 37)}…` : `Read: ${post.title}`;
 ---
 
 <Card
@@ -42,23 +46,20 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
       : 'flex h-full flex-col',
     className,
   ]}
-  data-blog-card
+  data-topic-card
   data-tag={post.tag}
   data-ts={timestamp}
   data-read-minutes={readMinutes}
 >
-  <a
-    href={href}
+  <div
     class:list={[
-      'blog-card__media relative block aspect-video overflow-hidden focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-card',
+      'blog-card__media relative block aspect-video overflow-hidden',
       isFeatured && 'blog-featured__media lg:aspect-auto lg:min-h-[16rem] lg:self-stretch',
     ]}
-    tabindex="-1"
-    aria-hidden="true"
   >
     <ResponsiveImage
       src={post.image}
-      alt=""
+      alt={imageAlt}
       width={isFeatured ? 960 : 640}
       height={isFeatured ? 540 : 360}
       widths={isFeatured ? undefined : CARD_IMAGE_WIDTHS}
@@ -100,7 +101,7 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
       class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
       aria-hidden="true"
     />
-  </a>
+  </div>
 
   <div class:list={['blog-card__body', isFeatured ? 'blog-featured__body lg:border-l lg:border-border' : 'flex min-h-0 flex-1 flex-col']}>
     <CardContent
@@ -144,7 +145,7 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
         <span>{post.readTime}</span>
       </p>
       <Button as="a" href={href} variant="outline" size="sm" class="blog-card__read shrink-0">
-        {t.blog.read}
+        {readLabel}
         <Icon name="arrowRight" size={16} />
       </Button>
     </CardFooter>

@@ -30,9 +30,15 @@ function link(text: string, href: string): string {
 }
 
 const elite = link('Rainbow Six Siege Elite', productPath('elite'));
+const eliteCheckout = link('Elite checkout page', productPath('elite'));
+const eliteModules = link('Elite combat modules', productPath('elite'));
+const eliteBots = link('Elite bot automation tier', productPath('elite'));
 const lite = link('Lite tier (ESP suite & ESP)', ROUTES.products);
 const pro = link('Pro tier (scripts included)', ROUTES.products);
 const productsHub = link('Rainbow Six Siege products', ROUTES.products);
+const productsCatalog = link('R6 Siege products catalog', ROUTES.products);
+const productsOverview = link('products overview hub', ROUTES.products);
+const productsListings = link('live product listings', ROUTES.products);
 const hwid = link('HWID Spoofer', productPath('hwid-spoofer'));
 const ugc = link('UGC', productPath('ugc'));
 const skin = link('Skin Changer', productPath('unlock-all'));
@@ -118,7 +124,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqRankTiers',
     q: 'How do you rank Lite vs Pro vs Elite?',
-    a: `Map awareness only → ${lite}. Ranked gunfights with scripts → ${pro}. Full bot suite and priority patches → ${elite}. Compare on each cheat page or the ${faqPage}.`,
+    a: `Map awareness only → ${lite}. Ranked gunfights with scripts → ${pro}. Full bot suite and priority patches → ${eliteBots}. Compare on each cheat page or the ${faqPage}.`,
   },
   {
     id: 'elite-slots',
@@ -178,7 +184,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'products',
     icon: 'faqExternalLoader',
     q: 'Is the loader injected into the Ubisoft Connect folder?',
-    a: `R6SiegeCheat runs external with cloud config sync—no files injected into the Rainbow Six Siege directory. BattlEye risk still applies. See ${productsHub}.`,
+    a: `R6SiegeCheat runs external with cloud config sync—no files injected into the Rainbow Six Siege directory. BattlEye risk still applies. See ${productsCatalog}.`,
   },
   {
     id: 'blog-vs-cheats',
@@ -192,7 +198,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'blog',
     icon: 'faqBlogSetup',
     q: 'Where do blog setup guides point for purchase?',
-    a: `Guides link to tier pages and ${productsHub}. Checkout runs through our secure partner—never paste loader files from random Discord DMs.`,
+    a: `Guides link to tier pages and ${productsOverview}. Checkout runs through our secure partner—never paste loader files from random Discord DMs.`,
   },
   {
     id: 'compare-plans',
@@ -259,7 +265,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'scripts',
     icon: 'faqAutoFarm',
     q: 'Which tier includes Utility automation?',
-    a: `Utility automation, Lane Control AI and Auto Courier Manager are ${elite} only. ${pro} covers combat scripts without bot farming.`,
+    a: `Utility automation, Lane Control AI and Auto Courier Manager are ${eliteCheckout} only. ${pro} covers combat scripts without bot farming.`,
     scopes: ['elite'],
   },
   {
@@ -291,7 +297,8 @@ export function getAllFaqs(): SiteFaqItem[] {
 /** Shared FAQ block copy + filters (home, /faq/, products, blog). */
 export const SITE_FAQ_SECTION_COPY = {
   eyebrow: 'All topics',
-  title: 'Siege Cheats FAQ — products, setup & checkout',
+  title:
+    'Siege Cheats FAQ — live status banner on r6siegecheat; products, setup & checkout',
   subtitle: 'Filter plans, ESP, aim tools, products, setup and blog answers.',
 } as const;
 
@@ -437,7 +444,7 @@ const defaultBlogFaqs: SiteFaqItem[] = [
     topic: 'blog',
     icon: 'faqBlogDefault1',
     q: 'Are blog guides official product documentation?',
-    a: `Articles explain workflows and link to ${lite}, ${pro}, ${elite} and ${productsHub}. Feature lists on product pages are authoritative for checkout.`,
+    a: `Articles explain workflows and link to ${lite}, ${pro}, ${eliteModules} and ${productsListings}. Feature lists on product pages are authoritative for checkout.`,
   },
   {
     id: 'blog-default-2',

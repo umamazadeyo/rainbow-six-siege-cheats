@@ -336,7 +336,7 @@ export const commercialBlogPosts: BlogPostFull[] = [
       },
       {
         type: 'p',
-        "text": "Complete checkout on the relevant product page ([Elite](/products/rainbow-six-siege-cheats/elite/), [HWID](/products/rainbow-six-siege-cheats/hwid-spoofer/), etc.), open the portal from your order email, download the latest loader build, and import a conservative preset before launching Siege. HWID purchases must finish spoof verification before combat modules."
+        "text": "Complete checkout on the relevant product page ([Elite combat checkout](/products/rainbow-six-siege-cheats/elite/), [HWID spoofer page](/products/rainbow-six-siege-cheats/hwid-spoofer/), etc.), open the portal from your order email, download the latest loader build, and import a conservative preset before launching Siege. HWID purchases must finish spoof verification before combat modules."
       },
       {
         type: 'h2',
@@ -381,7 +381,7 @@ export const commercialBlogPosts: BlogPostFull[] = [
       },
       {
         type: 'p',
-        "text": "Screenshots on [Elite](/products/rainbow-six-siege-cheats/elite/) show aim assist and recoil menus (Zadeyo product imagery). Expect smoothing controls, recoil profiles, and combat modules grouped with ESP—not a separate storefront SKU."
+        "text": "Screenshots on [Elite aim module page](/products/rainbow-six-siege-cheats/elite/) show aim assist and recoil menus (Zadeyo product imagery). Expect smoothing controls, recoil profiles, and combat modules grouped with ESP—not a separate storefront SKU."
       },
       {
         type: 'h2',

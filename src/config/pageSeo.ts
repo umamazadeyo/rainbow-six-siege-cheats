@@ -37,7 +37,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/blog/': {
     title: 'Blogs – Rainbow Six Siege Cheats Guides & Patch Notes',
     description:
-      'Setup guides, Lite vs Pro comparisons, BattlEye patch checklists, and ranked config tips for R6 Siege cheats on Ubisoft Connect PC.',
+      'Blogs: Setup guides, Lite vs Pro comparisons, BattlEye patch checklists, and ranked config tips for R6 Siege cheats on Ubisoft Connect PC.',
   },
   '/forum/': {
     title: 'Community – Join R6 Siege players to discuss operators',

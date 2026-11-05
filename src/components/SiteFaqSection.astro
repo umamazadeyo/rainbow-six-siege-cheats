@@ -17,6 +17,8 @@ interface Props {
   variant?: 'full' | 'contextual';
   filterTopics?: FaqTopic[];
   headingLevel?: 'h1' | 'h2';
+  /** Overrides default section title (SEO headings only). */
+  title?: string;
 }
 
 const {
@@ -27,9 +29,11 @@ const {
   variant = 'contextual',
   filterTopics: filterTopicsProp,
   headingLevel = 'h1',
+  title: titleOverride,
 } = Astro.props;
 
 const copy = variant === 'full' ? SITE_FAQ_SECTION_COPY : CONTEXTUAL_FAQ_SECTION_COPY;
+const sectionTitle = titleOverride ?? copy.title;
 const filterTopics =
   filterTopicsProp ?? (variant === 'full' ? SITE_FAQ_FILTER_TOPICS : faqFilterTopicsForItems(items));
 const showFilters = filterTopics.length > 1;
@@ -39,7 +43,7 @@ const showFilters = filterTopics.length > 1;
   id={id}
   items={items}
   eyebrow={copy.eyebrow}
-  title={copy.title}
+  title={sectionTitle}
   subtitle={copy.subtitle}
   titleId={titleId}
   showFilters={showFilters}

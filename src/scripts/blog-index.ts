@@ -1,7 +1,7 @@
 /** Blog index topic filters + Starwind sort select. */
 export function initBlogIndexFilters() {
-  const grid = document.getElementById('blog-grid');
-  const emptyEl = document.getElementById('blog-empty');
+  const grid = document.getElementById('guides-grid');
+  const emptyEl = document.getElementById('guides-empty');
   const sortRoot = document.getElementById('blog-sort-select');
   if (!grid) return;
 
@@ -10,13 +10,13 @@ export function initBlogIndexFilters() {
     emptyEl?.textContent?.trim() ||
     'No articles match this filter.';
 
-  const filters = document.querySelectorAll<HTMLButtonElement>('[data-blog-filter]');
+  const filters = document.querySelectorAll<HTMLButtonElement>('[data-topic-filter]');
 
-  const cards = () => [...grid.querySelectorAll<HTMLElement>('[data-blog-card]')];
+  const cards = () => [...grid.querySelectorAll<HTMLElement>('[data-topic-card]')];
 
   const activeTag = () =>
-    document.querySelector<HTMLButtonElement>('[data-blog-filter][aria-pressed="true"]')?.getAttribute(
-      'data-blog-filter',
+    document.querySelector<HTMLButtonElement>('[data-topic-filter][aria-pressed="true"]')?.getAttribute(
+      'data-topic-filter',
     ) ?? 'all';
 
   const getSortSelectRoot = () => sortRoot?.querySelector<HTMLElement>('[data-sw-select]');

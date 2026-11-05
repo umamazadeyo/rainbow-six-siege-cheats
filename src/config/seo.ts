@@ -78,6 +78,9 @@ const BLOG_DOCUMENT_TITLES: Record<string, string> = {
     'Rainbow Six Siege: Compare Features, Products & Pricing',
   'best-r6-cheats-features-packages': 'Best R6 Cheats – features, utilities & packages compared',
   'buy-r6-siege-cheats-before-you-choose': 'Buy R6 – checklist before choosing a Siege package',
+  'r6-cheat-download-compatibility-setup':
+    'R6 Cheat – Product Compatibility, Requirements & Set',
+  'r6-aimbot-features-settings': 'R6 Aimbot – Features, Settings & Available Options',
 };
 
 export function blogDocumentTitle(slug: string, postTitle: string): string {

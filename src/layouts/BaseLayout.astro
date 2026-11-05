@@ -16,6 +16,7 @@ import {
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import JsonLd from '../components/JsonLd.astro';
+import SeoShareLinks from '../components/SeoShareLinks.astro';
 
 interface Props {
   title?: string;
@@ -149,6 +150,7 @@ const robotsContent = noindex
     <main id="main-content">
       <slot />
     </main>
+    <SeoShareLinks url={canonical} title={title} />
     <Footer />
     <script>
       import '../scripts/site.ts';

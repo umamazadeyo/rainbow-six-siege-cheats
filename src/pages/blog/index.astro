@@ -75,7 +75,7 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
           <button
             type="button"
             class="blog-filter inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium shadow-xs hover:bg-muted"
-            data-blog-filter="all"
+            data-topic-filter="all"
             aria-pressed="true"
           >
             <span class="flex size-7 items-center justify-center rounded-full bg-muted text-primary" aria-hidden="true">
@@ -88,7 +88,7 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
               <button
                 type="button"
                 class="blog-filter inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium shadow-xs hover:bg-muted"
-                data-blog-filter={tag}
+                data-topic-filter={tag}
                 aria-pressed="false"
               >
                 <span
@@ -107,7 +107,7 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
       </div>
 
       <div
-        id="blog-grid"
+        id="guides-grid"
         class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10"
         data-empty-message={t.blog.emptyFilter}
       >
@@ -116,9 +116,19 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
         ))}
       </div>
 
-      <p id="blog-empty" class="mt-10 text-center text-muted-foreground" role="status" hidden>
+      <p id="guides-empty" class="mt-10 text-center text-muted-foreground" role="status" hidden>
         {t.blog.emptyFilter}
       </p>
+
+      <nav
+        class="mt-10 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground"
+        aria-label="More on this site"
+      >
+        <a href="/reviews/">Player reviews hub</a>
+        <a href="/terms/">Terms &amp; conditions</a>
+        <a href="/support/">Setup support desk</a>
+        <a href="/privacy/">Privacy policy page</a>
+      </nav>
 
       <div class="mt-12 flex justify-start lg:justify-center">
         <Button as="a" href={ROUTES.home} variant="outline">

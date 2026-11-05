@@ -186,10 +186,10 @@ const published = parseBlogDate(post.date);
               <Icon name="arrowRight" size={17} />
             </Button>
             <Button as="a" href={ROUTES.products} variant="outline">
-              View products
+              Open R6 product hub
             </Button>
             <Button as="a" href={ROUTES.blog} variant="outline">
-              More articles
+              Return to guides index
               <Icon name="arrowRight" size={17} />
             </Button>
           </nav>
@@ -202,5 +202,6 @@ const published = parseBlogDate(post.date);
     items={getBlogFaqs(post.tag, post.slug)}
     titleId={`blog-faq-${post.slug}`}
     class="border-t border-border bg-muted/20"
+    headingLevel="h2"
   />
 </BaseLayout>
