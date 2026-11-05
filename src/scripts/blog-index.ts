@@ -57,12 +57,12 @@ export function initBlogIndexFilters() {
     let visibleCount = 0;
     items.forEach((el) => {
       const match = tag === 'all' || el.getAttribute('data-tag') === tag;
-      el.classList.toggle('hidden', !match);
+      el.toggleAttribute('data-hidden', !match);
       if (match) visibleCount += 1;
     });
 
     if (emptyEl) {
-      emptyEl.classList.toggle('hidden', visibleCount > 0);
+      emptyEl.toggleAttribute('hidden', visibleCount > 0);
       emptyEl.textContent = emptyMessage;
     }
   };

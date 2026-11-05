@@ -120,6 +120,14 @@
 }
 
 /* Blog index filters */
+#blog-grid [data-blog-card][data-hidden] {
+  display: none;
+}
+
+#blog-empty[hidden] {
+  display: none;
+}
+
 .blog-filter {
   transition:
     border-color 0.15s ease,

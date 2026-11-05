@@ -1,7 +1,6 @@
 ---
 export const prerender = true;
 
-import '../../styles/blog-pages.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {
   blogPosts,
@@ -115,7 +114,7 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
         ))}
       </div>
 
-      <p id="blog-empty" class="mt-10 hidden text-center text-muted-foreground" role="status">
+      <p id="blog-empty" class="mt-10 text-center text-muted-foreground" role="status" hidden>
         {t.blog.emptyFilter}
       </p>
 
@@ -131,11 +130,10 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
   <script>
     import { initBlogIndexFilters } from '../../scripts/blog-index.ts';
 
-    const boot = () => initBlogIndexFilters();
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', boot);
+      document.addEventListener('DOMContentLoaded', () => initBlogIndexFilters());
     } else {
-      boot();
+      initBlogIndexFilters();
     }
   </script>
 </BaseLayout>
